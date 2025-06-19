@@ -1,0 +1,94 @@
+# Overview  
+The product is a children's bedtime story generation app designed to help parents easily create engaging, personalized bedtime stories using their child's name and story preferences. The app leverages playful UI and curated storytelling categories to make storytime fun, accessible, and magical. It is intended for parents of young children (ages 2–8) who want quick, delightful stories that feel personal and repeatable.
+
+# Core Features  
+- **User Account System**
+  - What it does: Allows users to create and manage accounts.
+  - Why it's important: Enables story saving, personalization, and continuity.
+  - How it works: Email/password-based signup and login, with secure backend storage.
+
+- **Story Generation**
+  - What it does: Automatically generates a short story based on inputs.
+  - Why it's important: Core value of the app — delivering personalized content.
+  - How it works: Users enter the child's name and select a category (e.g., Dinosaurs, Space, Princesses), and the app generates a unique short story using a prompt-based story engine (AI).
+
+- **Story Categories (Icon-Based Picker)**
+  - What it does: Lets users choose a story theme.
+  - Why it's important: Makes the story relevant and fun for kids.
+  - How it works: Users pick from visual icons (e.g., dragon, rocket, jungle), each mapping to a different story genre.
+
+- **Saved Stories Library**
+  - What it does: Stores previously generated stories.
+  - Why it's important: Encourages reuse and reading favorites.
+  - How it works: Stories saved to the user's account; simple list UI for access.
+
+# User Experience  
+- **User Personas**
+  - "Busy Parent" – Needs a fast, engaging way to read stories at bedtime.
+  - "Curious Kid" – Loves hearing stories where they are the main character.
+  
+- **Key User Flows**
+  - Flow 1: New user → Sign up → Enter child's name → Select story icon → Generate → Read
+  - Flow 2: Returning user → Log in → Access saved stories or generate new one
+  
+- **UI/UX Considerations**
+  - Simple, playful interface with large buttons and illustrations
+  - Mobile-first design
+  - Minimal steps to reach a story
+  - Option to "regenerate" story if user wants a new variation
+
+# Technical Architecture  
+- **System Components**
+  - **Frontend:** Built with Next.js using the create-t3-app boilerplate. Uses TypeScript, Tailwind CSS, and shadcn/ui for consistent, accessible component styling. tRPC is used for full-stack type safety and seamless API routing.
+  - **Backend:** Application logic is encapsulated in tRPC routers within the Next.js app. Story generation is triggered via server-side functions that interact with the OpenAI API.
+  - **Database:** PostgreSQL, accessed through Prisma ORM.
+  - **Authentication:** NextAuth.js using email/password (credentials provider) or magic link/email-based login.
+  - **Story Engine:** GPT-powered generation via OpenAI's API, with server-side logic to construct prompts and parse responses.
+
+- **APIs and Integrations**
+  - **tRPC Routers**: Handle all application logic for user sessions, child profiles, story creation, and story retrieval.
+  - **OpenAI API**: Generates story content based on name and selected category.
+  - **Prisma Client**: Handles all database interactions.
+  - **NextAuth.js**: Manages session and authentication state across the app.
+
+# Development Roadmap  
+- **MVP Requirements**
+  - Basic auth (email/password)
+  - Name input for story personalization
+  - Icon-based story category selection
+  - Story generation (via API)
+  - Save and retrieve generated stories
+
+- **Future Enhancements**
+  - Audio narration feature
+  - Ability to tweak story details (e.g., setting, supporting characters)
+  - Daily story suggestions / streaks
+  - Multiple children profiles
+  - Shareable story links
+  - Offline access
+
+# Logical Dependency Chain
+- Step 1: User auth system and database schema
+- Step 2: Frontend scaffolding with routing and basic UI
+- Step 3: Build story generation interface (input + icon picker)
+- Step 4: Integrate story generation API
+- Step 5: Build display UI for generated story
+- Step 6: Add save-to-library feature and story retrieval
+- Step 7: Add polish — transitions, UX refinement, etc.
+
+# Risks and Mitigations  
+- **Technical challenges**
+  - Prompt tuning and story quality → Start with 3–5 well-tested templates
+- **Figuring out MVP that we can build upon**
+  - Risk: Adding too many features early → Solution: Stick to 3 core flows
+- **Resource constraints**
+  - Risk: Over-scoping MVP → Mitigation: Only include essential UI and flows
+
+# Appendix  
+- **Research findings**
+  - Kids respond better to stories that use their names and familiar themes
+  - Parents prefer fewer steps and quick results at bedtime
+
+- **Technical specifications**
+  - Initial mobile target: Chrome + Safari browsers
+  - Expected story length: 200–300 words 
