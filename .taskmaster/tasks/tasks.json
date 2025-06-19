@@ -9,21 +9,80 @@
         "testStrategy": "Verify that the project builds successfully and the initial page renders without errors.",
         "priority": "medium",
         "dependencies": [],
-        "status": "pending",
+        "status": "done",
         "subtasks": []
       },
       {
         "id": 3,
         "title": "Design Database Schema",
         "description": "Create the database schema using Prisma ORM to support user accounts, story data, and categories.",
-        "details": "Define models for User, Story, and Category in the Prisma schema. Ensure relationships are correctly established. Use PostgreSQL as the database and configure the Prisma client for database interactions.",
+        "details": "Define models for User, Story, and Category in the Prisma schema. Ensure relationships are correctly established. Use PostgreSQL as the database and configure the Prisma client for database interactions.\n<info added on 2025-06-19T12:17:17.467Z>\nResearch current best practices for designing a Prisma schema for a Next.js application, focusing on user accounts, content storage (stories), and categorization. Include recommendations for relations, indexing, and data modeling. Ensure the detail level is high and consider a context size of 18509 characters.\n</info added on 2025-06-19T12:17:17.467Z>",
         "testStrategy": "Run Prisma migrations and verify the database schema is created correctly. Test CRUD operations for each model.",
         "priority": "high",
         "dependencies": [
           1
         ],
-        "status": "pending",
-        "subtasks": []
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set up initial Prisma configuration",
+            "description": "Initialize Prisma in the project and configure it to use PostgreSQL.",
+            "dependencies": [],
+            "details": "Run 'npx prisma init' to set up Prisma. Configure the .env file with PostgreSQL connection details.",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Create the User model",
+            "description": "Define the User model in the Prisma schema, integrating with NextAuth.",
+            "dependencies": [
+              1
+            ],
+            "details": "Add a User model to the schema.prisma file with fields for id, name, email, and any other necessary fields for NextAuth integration.",
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "Create the Story model with proper relations",
+            "description": "Define the Story model in the Prisma schema and establish relationships with the User model.",
+            "dependencies": [
+              2
+            ],
+            "details": "Add a Story model with fields for id, title, content, and a relation to the User model (author).",
+            "status": "done"
+          },
+          {
+            "id": 4,
+            "title": "Create the Category model with many-to-many relationships",
+            "description": "Define the Category model in the Prisma schema and set up a many-to-many relationship with the Story model.",
+            "dependencies": [
+              3
+            ],
+            "details": "Add a Category model with fields for id and name. Use a join table to establish a many-to-many relationship with the Story model.",
+            "status": "done"
+          },
+          {
+            "id": 5,
+            "title": "Set up indexes and optimizations",
+            "description": "Optimize the database schema by setting up indexes on frequently queried fields.",
+            "dependencies": [
+              4
+            ],
+            "details": "Identify fields that require indexing, such as email in the User model, and add indexes in the schema.prisma file.",
+            "status": "done"
+          },
+          {
+            "id": 6,
+            "title": "Create database migrations and seed data",
+            "description": "Generate and apply database migrations, then create seed data for testing.",
+            "dependencies": [
+              5
+            ],
+            "details": "Run 'npx prisma migrate dev' to apply migrations. Create a seed script to populate the database with initial data.",
+            "status": "done"
+          }
+        ]
       },
       {
         "id": 4,
@@ -170,7 +229,7 @@
     ],
     "metadata": {
       "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T12:04:24.879Z",
+      "updated": "2025-06-19T12:23:04.230Z",
       "description": "Tasks for master context"
     }
   }
