@@ -225,11 +225,119 @@
             "status": "pending"
           }
         ]
+      },
+      {
+        "id": 4,
+        "title": "Implement Conditional Navigation Based on Authentication State",
+        "description": "Modify the header and mobile navigation to conditionally display elements based on user authentication state using NextAuth.js.",
+        "details": "1. Utilize the `useSession` hook from NextAuth.js to determine the user's authentication state.\n2. In the header and mobile navigation components, implement conditional rendering:\n   - When the user is logged in, replace the login/signup buttons with a logout button and display the user's profile information (name and email from Google).\n   - When the user is not logged in, display the existing login/signup buttons.\n3. Implement the logout functionality using NextAuth.js's signOut method.\n4. Ensure that the changes are consistent across both desktop and mobile navigation by updating the respective components.\n5. Add loading states to handle transitions during authentication state changes, using a spinner or similar UI element.\n6. Implement error handling for the logout action to display appropriate messages to the user.\n7. Ensure smooth transitions when switching between authenticated and unauthenticated states, using CSS transitions or animations.\n8. Maintain responsive design and follow accessibility best practices, ensuring all interactive elements are keyboard accessible and have appropriate ARIA labels.\n9. Define TypeScript types for session data to ensure type safety.",
+        "testStrategy": "1. Verify that the `useSession` hook correctly identifies the user's authentication state and updates the UI accordingly.\n2. Test the logout functionality to ensure it logs the user out and updates the UI to show login/signup buttons.\n3. Check that the user's profile information is displayed correctly when logged in.\n4. Ensure that loading states are displayed during authentication state changes and that they disappear once the state is resolved.\n5. Test error handling by simulating logout failures and verifying that appropriate error messages are shown.\n6. Verify that transitions between authenticated and unauthenticated states are smooth and visually appealing.\n7. Test the navigation components on different screen sizes to ensure responsive design is maintained.\n8. Use accessibility tools to check that all interactive elements are accessible via keyboard and screen readers.",
+        "status": "pending",
+        "dependencies": [
+          2,
+          3
+        ],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Integrate useSession hook in header component",
+            "description": "Add the useSession hook to the header component to manage session state.",
+            "dependencies": [],
+            "details": "Ensure the header component can access session information to determine user authentication status.",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Implement conditional rendering for logged-in state in header",
+            "description": "Display appropriate UI elements for logged-in users in the header.",
+            "dependencies": [
+              1
+            ],
+            "details": "Render user-specific options such as profile and logout buttons when the user is logged in.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement conditional rendering for logged-out state in header",
+            "description": "Display appropriate UI elements for logged-out users in the header.",
+            "dependencies": [
+              1
+            ],
+            "details": "Render login and signup buttons when the user is not authenticated.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Integrate useSession hook in mobile navigation component",
+            "description": "Add the useSession hook to the mobile navigation component to manage session state.",
+            "dependencies": [],
+            "details": "Ensure the mobile navigation can access session information to determine user authentication status.",
+            "status": "done"
+          },
+          {
+            "id": 5,
+            "title": "Implement conditional rendering for logged-in state in mobile navigation",
+            "description": "Display appropriate UI elements for logged-in users in mobile navigation.",
+            "dependencies": [
+              4
+            ],
+            "details": "Render user-specific options such as profile and logout buttons when the user is logged in.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Implement conditional rendering for logged-out state in mobile navigation",
+            "description": "Display appropriate UI elements for logged-out users in mobile navigation.",
+            "dependencies": [
+              4
+            ],
+            "details": "Render login and signup buttons when the user is not authenticated.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Implement logout functionality using signOut method",
+            "description": "Enable users to log out from both header and mobile navigation.",
+            "dependencies": [
+              2,
+              3,
+              5,
+              6
+            ],
+            "details": "Use the signOut method to handle user logout and update UI accordingly.",
+            "status": "done"
+          },
+          {
+            "id": 8,
+            "title": "Add loading states and error handling",
+            "description": "Implement loading indicators and error handling for session management.",
+            "dependencies": [
+              1,
+              4
+            ],
+            "details": "Ensure the UI provides feedback during session state changes and handles errors gracefully.",
+            "status": "done"
+          },
+          {
+            "id": 9,
+            "title": "Ensure responsive design and accessibility compliance",
+            "description": "Verify that the navigation components are responsive and accessible.",
+            "dependencies": [
+              2,
+              3,
+              5,
+              6
+            ],
+            "details": "Test across different devices and screen sizes, and ensure compliance with accessibility standards.",
+            "status": "done"
+          }
+        ]
       }
     ],
     "metadata": {
       "created": "2025-06-19T19:25:22.389Z",
-      "updated": "2025-06-19T20:27:13.136Z",
+      "updated": "2025-06-19T20:45:58.573Z",
       "description": "Tasks for implementing the story display UI feature"
     }
   }

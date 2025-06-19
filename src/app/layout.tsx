@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 import "@/styles/globals.css";
 import { Providers } from "@/components/providers";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           >
             <Header />
             <div className="py-6">{children}</div>
+            <Toaster richColors closeButton position="top-right" />
           </ThemeProvider>
         </Providers>
       </body>
