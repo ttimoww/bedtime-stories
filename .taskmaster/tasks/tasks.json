@@ -142,7 +142,7 @@
             "description": "Initialize a new Next.js application to serve as the foundation for implementing authentication.",
             "dependencies": [],
             "details": "Use the command `npx create-next-app my-next-auth-app` to create a new Next.js project. Navigate into the project directory using `cd my-next-auth-app`.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 2,
@@ -152,7 +152,7 @@
               1
             ],
             "details": "Run `npm install next-auth` to install NextAuth.js. Depending on the chosen database, install the corresponding adapter, such as `@next-auth/prisma-adapter` for Prisma. For email authentication, install `nodemailer` using `npm install nodemailer`.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 3,
@@ -162,7 +162,7 @@
               2
             ],
             "details": "Create a `.env.local` file in the project root and add variables such as `DATABASE_URL`, `NEXTAUTH_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `EMAIL_SERVER`, and `EMAIL_FROM` with appropriate values.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 4,
@@ -172,7 +172,7 @@
               3
             ],
             "details": "Choose a database (e.g., PostgreSQL, MongoDB) and set up the necessary tables or collections. For PostgreSQL, create tables for users, accounts, and sessions. Ensure the database connection is established in the application.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 5,
@@ -182,7 +182,7 @@
               4
             ],
             "details": "Create a file at `pages/api/auth/[...nextauth].js` and configure NextAuth.js with the chosen providers, database adapter, and session settings. Implement callbacks for sign-in and session management as needed.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 6,
@@ -192,7 +192,7 @@
               5
             ],
             "details": "Register the application with the chosen OAuth providers to obtain client IDs and secrets. Add the providers to the NextAuth.js configuration, specifying the client credentials and any necessary scopes.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 7,
@@ -212,7 +212,7 @@
               7
             ],
             "details": "Create React components for login and registration forms. Integrate these forms with the authentication functions provided by NextAuth.js, such as `signIn` and `signOut`.",
-            "status": "pending"
+            "status": "done"
           },
           {
             "id": 9,
@@ -333,11 +333,145 @@
             "status": "done"
           }
         ]
+      },
+      {
+        "id": 5,
+        "title": "Add Theme Selection to Story Generation",
+        "description": "Implement a feature allowing users to select a theme for story generation, influencing the story content based on the chosen theme.",
+        "details": "1. Define a set of predefined themes: dinosaurs, pirates, princess, space, and animals. \n2. Update the story generation logic to accept a theme parameter and adjust the story prompt to align with the selected theme. This may involve modifying the backend API or story generation function to incorporate theme-specific elements into the story content.\n3. Design and implement UI components for theme selection within the story creation form. This could be a dropdown menu or a set of radio buttons allowing users to choose their desired theme.\n4. Ensure the UI components are styled consistently with the existing design system, using CSS or a UI library like Material-UI or Tailwind CSS.\n5. Update the story creation form to pass the selected theme to the story generation function when a new story is created.",
+        "testStrategy": "1. Verify that the theme selection UI is displayed correctly in the story creation form and is styled consistently with the rest of the application.\n2. Test each theme selection to ensure the correct theme is passed to the story generation function.\n3. Generate stories using each theme and verify that the content aligns with the selected theme (e.g., a dinosaur-themed story should include dinosaur-related elements).\n4. Check for any UI or functionality issues across different browsers and devices to ensure a consistent user experience.",
+        "status": "pending",
+        "dependencies": [
+          1
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design the Form Layout",
+            "description": "Create a user-friendly form layout that is intuitive and easy to navigate.",
+            "dependencies": [],
+            "details": "Develop a single-column layout to enhance readability and usability, especially on mobile devices. Group related fields together using headers and fieldsets to reduce cognitive load. Ensure that labels are clear, concise, and positioned above or to the left of input fields for better accessibility.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Implement the Icon-Based Picker",
+            "description": "Develop an interactive icon-based picker for user input selection.",
+            "dependencies": [
+              1
+            ],
+            "details": "Design and code an icon-based picker that allows users to select options visually. Ensure that the picker is keyboard accessible and provides alternative text for screen readers. Test the picker for usability and accessibility compliance.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Ensure UI Accessibility",
+            "description": "Make the user interface accessible to users with disabilities.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Implement semantic HTML elements and ARIA attributes to enhance accessibility. Ensure that all form elements are operable via keyboard navigation and provide visible focus indicators. Use sufficient color contrast and avoid relying solely on color to convey information. Provide clear error messages and validation feedback.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Make the UI Responsive",
+            "description": "Ensure the user interface adapts seamlessly to various screen sizes and devices.",
+            "dependencies": [
+              1,
+              2,
+              3
+            ],
+            "details": "Use responsive design techniques such as flexible grids and media queries to create a layout that adjusts to different screen sizes. Ensure that touch targets are appropriately sized and spaced for mobile users. Test the form on multiple devices to verify responsiveness and usability.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Set Up Form Validation",
+            "description": "Implement client-side and server-side validation to ensure data integrity.",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "details": "Develop real-time validation to provide immediate feedback as users fill out the form. Use clear and descriptive error messages that are associated with the relevant input fields. Ensure that validation messages are accessible to screen readers and do not rely solely on color to indicate errors.",
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Update UI Navigation and Homepage Based on Authentication State",
+        "description": "Modify the UI navigation and homepage to display different elements based on the user's authentication state using Next.js session management.",
+        "details": "1. Utilize the `useSession` hook from NextAuth.js to determine the user's authentication state across the application.\n2. For Desktop Navigation:\n   - Replace 'Create a Story' and 'View Library' buttons with 'Sign Up' and 'Login' buttons when the user is not logged in.\n   - Ensure that the original buttons are displayed when the user is logged in.\n3. For Mobile Navigation:\n   - Update the mobile menu to reflect the authentication state, ensuring smooth transitions between logged-in and logged-out states.\n4. For the Landing Page:\n   - Replace main action buttons with 'Sign Up' and 'Login' when the user is not logged in.\n   - Maintain the current UI with 'Create a Story' and 'View Library' for logged-in users.\n5. Ensure consistent styling across all call-to-action buttons, following existing design patterns and color schemes.\n6. Maintain responsiveness and accessibility throughout the UI changes.",
+        "testStrategy": "1. Verify that the `useSession` hook correctly identifies the user's authentication state and updates the UI accordingly across desktop and mobile navigation.\n2. Test the transitions between logged-in and logged-out states to ensure they are smooth and visually consistent.\n3. Check that the correct buttons ('Sign Up' and 'Login' or 'Create a Story' and 'View Library') are displayed based on the user's authentication state on both desktop and mobile views.\n4. Ensure that the styling of the buttons is consistent with the rest of the application and adheres to the design guidelines.\n5. Test the responsiveness of the UI by resizing the browser window and ensuring the layout adjusts appropriately.\n6. Conduct accessibility checks to ensure all interactive elements are accessible via keyboard and screen readers.",
+        "status": "done",
+        "dependencies": [
+          3,
+          4
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create AuthAwareNavLinks component",
+            "description": "Create a reusable component that renders different navigation links based on authentication state",
+            "details": "Create a new component that:\n- Uses NextAuth's useSession hook to determine auth state\n- Renders 'Create Story' and 'View Library' links for authenticated users\n- Renders 'Sign Up' and 'Login' links for unauthenticated users\n- Implements proper styling using Tailwind CSS\n- Ensures accessibility with proper ARIA attributes\n- Includes smooth transitions between states",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 6
+          },
+          {
+            "id": 2,
+            "title": "Update desktop navigation",
+            "description": "Modify the desktop navigation to use the AuthAwareNavLinks component",
+            "details": "Update the desktop navigation by:\n- Importing and implementing the AuthAwareNavLinks component\n- Ensuring proper layout and spacing in the navigation bar\n- Maintaining consistent styling with the existing design\n- Testing responsive behavior\n- Verifying smooth transitions between auth states",
+            "status": "done",
+            "dependencies": [
+              1
+            ],
+            "parentTaskId": 6
+          },
+          {
+            "id": 3,
+            "title": "Update mobile navigation menu",
+            "description": "Modify the mobile navigation menu to use the AuthAwareNavLinks component",
+            "details": "Update the mobile navigation menu by:\n- Integrating the AuthAwareNavLinks component\n- Adjusting the mobile menu layout to accommodate both auth states\n- Ensuring proper spacing and touch targets for mobile devices\n- Maintaining smooth animations for menu open/close\n- Testing on various mobile screen sizes\n- Verifying proper behavior of auth-based navigation items",
+            "status": "done",
+            "dependencies": [
+              1
+            ],
+            "parentTaskId": 6
+          },
+          {
+            "id": 4,
+            "title": "Update landing page hero section",
+            "description": "Modify the landing page hero section to show different CTAs based on auth state",
+            "details": "Update the landing page hero section by:\n- Using the session state to conditionally render CTAs\n- Maintaining the existing layout and design\n- Implementing smooth transitions between auth states\n- Ensuring proper button styling and hover states\n- Verifying responsive behavior\n- Testing accessibility of interactive elements",
+            "status": "done",
+            "dependencies": [
+              1
+            ],
+            "parentTaskId": 6
+          },
+          {
+            "id": 5,
+            "title": "Create auth state utility hooks",
+            "description": "Create reusable hooks for managing auth state and related utilities",
+            "details": "Create utility hooks and functions that:\n- Wrap NextAuth's useSession for consistent usage\n- Provide helper functions for common auth state checks\n- Include TypeScript types for auth state\n- Add loading state handling\n- Implement proper error handling\n- Document usage patterns for the team",
+            "status": "done",
+            "dependencies": [],
+            "parentTaskId": 6
+          }
+        ]
       }
     ],
     "metadata": {
       "created": "2025-06-19T19:25:22.389Z",
-      "updated": "2025-06-19T20:45:58.573Z",
+      "updated": "2025-06-19T21:11:49.307Z",
       "description": "Tasks for implementing the story display UI feature"
     }
   }

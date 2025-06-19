@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { LandingPageCTA } from "@/components/landing-page-cta";
 
 export default function Home() {
   return (
@@ -12,14 +11,7 @@ export default function Home() {
           Generate personalized bedtime stories for your children using AI. Make
           bedtime an unforgettable adventure.
         </p>
-        <div className="flex justify-center gap-4">
-          <Button size="lg" asChild>
-            <Link href="/generate">Create a Story</Link>
-          </Button>
-          <Button variant="outline" size="lg" asChild>
-            <Link href="/library">View Library</Link>
-          </Button>
-        </div>
+        <LandingPageCTA />
       </div>
     </div>
   );

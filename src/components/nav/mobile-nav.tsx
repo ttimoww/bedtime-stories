@@ -14,6 +14,7 @@ import {
 import ThemeToggle from "@/components/theme-toggle";
 import { useSession, signOut } from "next-auth/react";
 import { toast } from "sonner";
+import { AuthAwareNavLinks } from "@/components/nav/auth-aware-nav-links";
 
 export default function MobileNav() {
   const { data: session, status } = useSession();
@@ -50,91 +51,34 @@ export default function MobileNav() {
 
   // Handle focus trap
   const sheetContentRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
-    if (isOpen && sheetContentRef.current) {
-      const focusableElements = sheetContentRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      );
-      const firstFocusable = focusableElements[0] as HTMLElement;
-      const lastFocusable = focusableElements[
-        focusableElements.length - 1
-      ] as HTMLElement;
-
-      function handleTabKey(e: KeyboardEvent) {
-        if (e.key === "Tab") {
-          if (e.shiftKey) {
-            if (document.activeElement === firstFocusable) {
-              e.preventDefault();
-              lastFocusable.focus();
-            }
-          } else {
-            if (document.activeElement === lastFocusable) {
-              e.preventDefault();
-              firstFocusable.focus();
-            }
-          }
-        }
-      }
-
-      document.addEventListener("keydown", handleTabKey);
-      return () => document.removeEventListener("keydown", handleTabKey);
-    }
-  }, [isOpen]);
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-2 focus-visible:ring-offset-2 md:hidden"
+          size="icon"
+          className="md:hidden"
           aria-label="Open mobile menu"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
         >
-          <Menu className="h-6 w-6" aria-hidden="true" />
-          <span className="sr-only">Toggle menu</span>
+          <Menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent
-        side="left"
-        className="pr-0"
-        ref={sheetContentRef}
-        role="dialog"
-        aria-label="Mobile navigation menu"
-        id="mobile-menu"
-      >
-        <SheetHeader className="mb-4 border-b pb-4">
-          <SheetTitle>Menu</SheetTitle>
+      <SheetContent side="left" className="w-72" ref={sheetContentRef}>
+        <SheetHeader className="border-b pb-4">
+          <SheetTitle>Navigation</SheetTitle>
         </SheetHeader>
-        <nav
-          className="flex flex-col space-y-3"
-          role="navigation"
-          aria-label="Mobile navigation"
-        >
+        <nav className="mt-4">
           <Link
             href="/"
-            className="hover:text-primary text-sm font-medium transition-colors"
+            className="hover:text-primary text-base font-medium transition-colors"
             onClick={() => setIsOpen(false)}
-            aria-label="Go to homepage"
           >
             Home
           </Link>
-          <Link
-            href="/stories"
-            className="hover:text-primary text-sm font-medium transition-colors"
-            onClick={() => setIsOpen(false)}
-            aria-label="View stories"
-          >
-            Stories
-          </Link>
-          <Link
-            href="/about"
-            className="hover:text-primary text-sm font-medium transition-colors"
-            onClick={() => setIsOpen(false)}
-            aria-label="Learn more about us"
-          >
-            About
-          </Link>
+          <div className="mt-4">
+            <AuthAwareNavLinks variant="mobile" />
+          </div>
           <div className="mt-4 border-t pt-4">
             <div className="flex flex-col space-y-3">
               {isLoading ? (
@@ -160,20 +104,7 @@ export default function MobileNav() {
                     Logout
                   </Button>
                 </>
-              ) : (
-                <>
-                  <Button
-                    variant="outline"
-                    asChild
-                    aria-label="Sign in to your account"
-                  >
-                    <Link href="/login">Login</Link>
-                  </Button>
-                  <Button asChild aria-label="Create a new account">
-                    <Link href="/signup">Sign up</Link>
-                  </Button>
-                </>
-              )}
+              ) : null}
               <div className="mt-2 flex items-center justify-between">
                 <span className="text-sm font-medium">Theme</span>
                 <ThemeToggle />

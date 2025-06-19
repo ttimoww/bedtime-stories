@@ -43,7 +43,6 @@ export function Header() {
         <MobileNav />
         <MainNav className="hidden md:flex" />
         <div className="ml-auto flex items-center space-x-4">
-          <ModeToggle />
           <div
             className="hidden md:flex md:items-center md:space-x-4"
             role="navigation"
@@ -89,6 +88,7 @@ export function Header() {
               </>
             )}
           </div>
+          <ModeToggle />
         </div>
       </div>
     </header>
