@@ -209,7 +209,7 @@
         "id": 6,
         "title": "Integrate Story Generation API",
         "description": "Connect the frontend with the Vercel AI SDK to generate stories based on user inputs.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           5
         ],
@@ -243,7 +243,7 @@
               2
             ],
             "details": "- Implement a simple request-response flow using the generateObject function\n- Add loading state management during story generation\n- Handle the complete story object when received from the API\n- Ensure proper type safety throughout the implementation\n- Integrate with the UI components to display the generated story\n- Add proper loading indicators during generation\n- Implement client-side state management for the story generation process",
-            "status": "in-progress"
+            "status": "done"
           },
           {
             "id": 4,
@@ -253,7 +253,7 @@
               3
             ],
             "details": "Ensure robust error handling is in place and users receive appropriate feedback in case of API errors or unexpected scenarios.",
-            "status": "pending"
+            "status": "done"
           }
         ]
       },
@@ -326,7 +326,7 @@
     ],
     "metadata": {
       "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T17:26:45.259Z",
+      "updated": "2025-06-19T19:21:50.283Z",
       "description": "Tasks for master context"
     }
   }

@@ -75,6 +75,7 @@ export function StoryGenerationForm() {
   });
 
   function handleSubmit(data: StoryFormValues) {
+    setGeneratedStory(null);
     generateStory.mutate(data);
   }
 
@@ -98,20 +99,18 @@ export function StoryGenerationForm() {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="age"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Age</FormLabel>
+                <FormLabel>Child's Age</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
-                    min={1}
-                    max={12}
                     placeholder="Enter your child's age"
                     {...field}
-                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
                   />
                 </FormControl>
                 <FormDescription>
@@ -121,26 +120,53 @@ export function StoryGenerationForm() {
               </FormItem>
             )}
           />
-          <StoryCategoryPicker control={form.control} name="category" />
+
+          <FormField
+            control={form.control}
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Story Category</FormLabel>
+                <FormControl>
+                  <StoryCategoryPicker control={form.control} name="category" />
+                </FormControl>
+                <FormDescription>
+                  Choose the type of story you'd like to generate.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {generateStory.error && (
+            <div className="bg-destructive/15 rounded-md p-4">
+              <div className="flex">
+                <div className="ml-3">
+                  <h3 className="text-destructive text-sm font-medium">
+                    Error generating story
+                  </h3>
+                  <div className="text-destructive/90 mt-2 text-sm">
+                    {generateStory.error.message}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           <Button
             type="submit"
-            className="w-full"
             disabled={generateStory.isPending}
+            className="w-full"
           >
             {generateStory.isPending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating Story...
+                Generating your story...
               </>
             ) : (
               "Generate Story"
             )}
           </Button>
-          {generateStory.error && (
-            <p className="text-destructive text-sm">
-              Error: {generateStory.error.message}
-            </p>
-          )}
         </form>
       </Form>
 
