@@ -142,14 +142,68 @@
         "id": 5,
         "title": "Develop Story Generation Interface",
         "description": "Build the user interface for inputting child's name and selecting story categories using icon-based picker.",
-        "details": "Create a form for entering the child's name. Implement an icon-based picker for story categories using shadcn/ui components. Ensure accessibility and responsiveness of the UI.",
-        "testStrategy": "Test the form submission and category selection. Verify that inputs are correctly captured and validated.",
-        "priority": "high",
+        "status": "done",
         "dependencies": [
           4
         ],
-        "status": "pending",
-        "subtasks": []
+        "priority": "high",
+        "details": "Create a form for entering the child's name using shadcn/ui Form components. Implement an icon-based picker for story categories using shadcn/ui components. Ensure accessibility and responsiveness of the UI.",
+        "testStrategy": "Test the form submission and category selection using React Hook Form. Verify that inputs are correctly captured, validated with Zod, and TypeScript types are correctly applied.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Design Form Layout",
+            "description": "Create a user-friendly and accessible form layout that aligns with project requirements.",
+            "dependencies": [],
+            "details": "Develop a form structure using shadcn/ui Form components such as form, form-field, form-item, form-label, and form-control. Ensure labels are clear and concise, placed adjacent to their corresponding input fields. Group related fields using appropriate components for better organization.",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Implement Icon-Based Picker",
+            "description": "Develop an interactive icon-based picker component for user input selection.",
+            "dependencies": [
+              1
+            ],
+            "details": "Create an icon-based picker using accessible HTML and ARIA attributes with shadcn/ui components. Ensure each icon has a descriptive label and is keyboard-navigable. Provide alternative text for each icon to assist screen reader users. Test the picker for usability and accessibility compliance.",
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "Ensure UI Accessibility",
+            "description": "Enhance the form's accessibility to accommodate users with disabilities.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Implement keyboard navigation by ensuring all form elements are operable using the Tab key and provide visible focus indicators. Use ARIA attributes like aria-labelledby and aria-describedby to associate labels and instructions with form fields. Ensure error messages are clear, descriptive, and programmatically associated with the relevant fields. Validate form input and provide real-time feedback to users.",
+            "status": "done"
+          },
+          {
+            "id": 4,
+            "title": "Make UI Responsive",
+            "description": "Adapt the form layout to be responsive across various devices and screen sizes.",
+            "dependencies": [
+              1,
+              2
+            ],
+            "details": "Use flexible layouts and CSS media queries to adjust the form's appearance on different screen sizes. Implement breakpoints to modify the layout for tablets and mobile devices. Ensure touch targets are large enough for easy interaction on touchscreens. Optimize images and icons for different devices, using scalable vector graphics (SVGs) where possible.",
+            "status": "done"
+          },
+          {
+            "id": 5,
+            "title": "Set Up Form Validation",
+            "description": "Implement client-side and server-side validation to ensure data integrity and provide user feedback.",
+            "dependencies": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "details": "Use Zod schema for form validation and integrate it with React Hook Form. Develop real-time inline validation to inform users about the correctness of their input as they type. Provide clear and specific error messages near the relevant fields. Use ARIA live regions to notify screen reader users of validation errors. Ensure that validation does not rely solely on color indicators to convey information. Apply TypeScript types derived from the Zod schema to ensure type safety.",
+            "status": "done"
+          }
+        ]
       },
       {
         "id": 6,
@@ -233,7 +287,7 @@
     ],
     "metadata": {
       "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T16:09:13.348Z",
+      "updated": "2025-06-19T16:45:13.514Z",
       "description": "Tasks for master context"
     }
   }

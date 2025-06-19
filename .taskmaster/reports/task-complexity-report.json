@@ -1,12 +1,12 @@
 {
 	"meta": {
-		"generatedAt": "2025-06-19T12:06:01.488Z",
-		"tasksAnalyzed": 15,
-		"totalTasks": 15,
+		"generatedAt": "2025-06-19T16:25:55.925Z",
+		"tasksAnalyzed": 1,
+		"totalTasks": 10,
 		"analysisCount": 15,
 		"thresholdScore": 5,
 		"projectName": "Taskmaster",
-		"usedResearch": true
+		"usedResearch": false
 	},
 	"complexityAnalysis": [
 		{
@@ -40,14 +40,6 @@
 			"recommendedSubtasks": 3,
 			"expansionPrompt": "Describe the process of creating the main layout and navigation components, implementing routing for key pages, and applying Tailwind CSS for styling with a mobile-first approach.",
 			"reasoning": "Setting up the frontend structure involves creating reusable components, configuring routing, and ensuring responsive design. While not overly complex, it requires a structured approach to establish a solid foundation for the application."
-		},
-		{
-			"taskId": 5,
-			"taskTitle": "Develop Story Generation Interface",
-			"complexityScore": 5,
-			"recommendedSubtasks": 4,
-			"expansionPrompt": "Break down the steps to create a form for entering the child's name, implement an icon-based picker for story categories using shadcn/ui components, and ensure accessibility and responsiveness.",
-			"reasoning": "Developing the story generation interface involves form creation, integrating UI components, and ensuring a user-friendly experience. Attention to accessibility and responsiveness adds to the complexity, necessitating multiple subtasks."
 		},
 		{
 			"taskId": 6,
@@ -128,6 +120,14 @@
 			"recommendedSubtasks": 4,
 			"expansionPrompt": "Outline the steps to set up monitoring tools to track application performance and errors, establish a maintenance schedule for updates and backups, and regularly review monitoring reports.",
 			"reasoning": "Monitoring and maintaining the application requires setting up tools to track performance, planning for regular updates, and ensuring data integrity through backups. Ongoing maintenance is essential for application stability and user satisfaction."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Develop Story Generation Interface",
+			"complexityScore": 7,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Break down the task into subtasks such as designing the form layout, implementing the icon-based picker, ensuring UI accessibility, making the UI responsive, and setting up form validation.",
+			"reasoning": "The task involves multiple components including UI design, implementation of interactive elements, and ensuring accessibility and responsiveness, which increases complexity. It requires integration with existing components and thorough testing, suggesting a need for multiple subtasks to manage these aspects effectively."
 		}
 	]
 }

@@ -1,31 +1,17 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { StoryGenerationForm } from "@/components/story-generation-form";
 
 export default function GeneratePage() {
   return (
-    <main className="container mx-auto space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Generate a Bedtime Story</CardTitle>
-          <CardDescription>
-            Describe what kind of story you would like to generate
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Textarea
-            placeholder="Example: A magical adventure about a brave little rabbit who discovers a secret garden..."
-            className="min-h-[100px]"
-          />
-          <Button className="w-full">Generate Story</Button>
-        </CardContent>
-      </Card>
-    </main>
+    <div className="container mx-auto py-10">
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-8 space-y-2">
+          <h1 className="text-3xl font-bold">Generate a Story</h1>
+          <p className="text-muted-foreground">
+            Fill in the details below to create a personalized bedtime story.
+          </p>
+        </div>
+        <StoryGenerationForm />
+      </div>
+    </div>
   );
 }
