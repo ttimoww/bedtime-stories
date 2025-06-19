@@ -208,15 +208,54 @@
       {
         "id": 6,
         "title": "Integrate Story Generation API",
-        "description": "Connect the frontend with the OpenAI API to generate stories based on user inputs.",
-        "details": "Use tRPC to handle API requests. Construct prompts for the OpenAI API using user inputs. Parse the API response to extract the generated story. Handle errors and edge cases gracefully.",
-        "testStrategy": "Test story generation with various inputs. Verify that the generated stories are displayed correctly and handle API errors.",
-        "priority": "high",
+        "description": "Connect the frontend with the Vercel AI SDK to generate stories based on user inputs.",
+        "status": "pending",
         "dependencies": [
           5
         ],
-        "status": "pending",
-        "subtasks": []
+        "priority": "high",
+        "details": "Use tRPC to handle API requests with the Vercel AI SDK. Construct prompts for the SDK using user inputs and leverage the SDK's structured output feature for better type safety. Parse the SDK response to extract the generated story. Handle errors and edge cases gracefully, providing user feedback.",
+        "testStrategy": "Test story generation with various inputs using the Vercel AI SDK. Verify that the generated stories are displayed correctly and handle SDK errors effectively.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Install and configure Vercel AI SDK",
+            "description": "Set up the Vercel AI SDK in the project to enable AI capabilities.",
+            "dependencies": [],
+            "details": "Ensure the Vercel AI SDK is installed and properly configured in the development environment.\n<info added on 2025-06-19T16:51:18.897Z>\nOrganize AI-related code in a dedicated folder structure:\n\n- Create a dedicated AI folder structure in src/lib/ai\n- This folder should contain:\n  - Configuration for Vercel AI SDK\n  - AI-related types and interfaces\n  - Prompt construction utilities\n  - Story generation logic\n  - Any other AI-related utilities\n- This separation will make the AI functionality more maintainable and easier to locate\n- Install and configure Vercel AI SDK within this new structure\n</info added on 2025-06-19T16:51:18.897Z>",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Create tRPC procedure with structured output types",
+            "description": "Develop a tRPC procedure that defines structured output types for API requests.",
+            "dependencies": [
+              1
+            ],
+            "details": "Design and implement a tRPC procedure that ensures the API responses are structured and typed.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Implement story generation with streaming responses",
+            "description": "Develop the logic to handle streaming responses for story generation using the Vercel AI SDK.",
+            "dependencies": [
+              2
+            ],
+            "details": "Utilize the Vercel AI SDK to implement streaming responses for generating stories based on user inputs.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Add error handling and user feedback",
+            "description": "Implement error handling mechanisms and provide user feedback for API errors and edge cases.",
+            "dependencies": [
+              3
+            ],
+            "details": "Ensure robust error handling is in place and users receive appropriate feedback in case of API errors or unexpected scenarios.",
+            "status": "pending"
+          }
+        ]
       },
       {
         "id": 7,
@@ -287,7 +326,7 @@
     ],
     "metadata": {
       "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T16:45:13.514Z",
+      "updated": "2025-06-19T16:55:35.210Z",
       "description": "Tasks for master context"
     }
   }
