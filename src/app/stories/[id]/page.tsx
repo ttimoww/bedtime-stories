@@ -1,16 +1,13 @@
-"use client";
-
 import { StoryDisplay } from "@/components/story-display";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronLeft, Loader2 } from "lucide-react";
 import { api } from "@/trpc/react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { TRPCClientError } from "@trpc/client";
 import type { AppRouter } from "@/server/api/root";
 
 export default function StoryPage({ params }: { params: { id: string } }) {
-  const router = useRouter();
   const {
     data: story,
     isLoading,
@@ -26,8 +23,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
     error &&
     (error as TRPCClientError<AppRouter>).data?.code === "NOT_FOUND"
   ) {
-    router.push("/library");
-    return null;
+    redirect("/library");
   }
 
   return (
