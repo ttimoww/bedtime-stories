@@ -18,8 +18,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { StoryCategoryPicker } from "@/components/story-category-picker";
+import { StoryThemePicker } from "@/components/story-theme-picker";
 import { api } from "@/trpc/react";
-import { StoryCategory } from "@/lib/ai/story-prompt";
+import { StoryCategory, StoryTheme } from "@/lib/ai/story-prompt";
 import { StoryDisplay } from "@/components/story-display";
 
 const storyFormSchema = z.object({
@@ -45,6 +46,9 @@ const storyFormSchema = z.object({
   category: z.nativeEnum(StoryCategory, {
     required_error: "Please select a story category.",
   }),
+  theme: z.nativeEnum(StoryTheme, {
+    required_error: "Please select a story theme.",
+  }),
 });
 
 type StoryFormValues = z.infer<typeof storyFormSchema>;
@@ -53,6 +57,7 @@ const defaultValues: Partial<StoryFormValues> = {
   childName: "",
   age: undefined,
   category: undefined,
+  theme: undefined,
 };
 
 export function StoryGenerationForm() {
@@ -132,6 +137,23 @@ export function StoryGenerationForm() {
                 </FormControl>
                 <FormDescription>
                   Choose the type of story you&apos;d like to generate.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="theme"
+            render={({ field: _field }) => (
+              <FormItem>
+                <FormLabel>Story Theme</FormLabel>
+                <FormControl>
+                  <StoryThemePicker control={form.control} name="theme" />
+                </FormControl>
+                <FormDescription>
+                  Choose what the story should be about.
                 </FormDescription>
                 <FormMessage />
               </FormItem>

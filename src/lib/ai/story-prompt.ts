@@ -1,14 +1,20 @@
 import { z } from 'zod';
 
-export const StoryCategory = {
-    Adventure: 'adventure',
-    Fantasy: 'fantasy',
-    Educational: 'educational',
-    Bedtime: 'bedtime',
-    Moral: 'moral',
-} as const;
+export enum StoryCategory {
+    Adventure = "adventure",
+    Fantasy = "fantasy",
+    Educational = "educational",
+    Bedtime = "bedtime",
+    Moral = "moral",
+}
 
-export type StoryCategory = typeof StoryCategory[keyof typeof StoryCategory];
+export enum StoryTheme {
+    Dinosaurs = "dinosaurs",
+    Pirates = "pirates",
+    Princess = "princess",
+    Space = "space",
+    Animals = "animals",
+}
 
 export const StorySchema = z.object({
     title: z.string(),
@@ -23,6 +29,13 @@ export const StorySchema = z.object({
         StoryCategory.Bedtime,
         StoryCategory.Moral
     ]),
+    theme: z.enum([
+        StoryTheme.Dinosaurs,
+        StoryTheme.Pirates,
+        StoryTheme.Princess,
+        StoryTheme.Space,
+        StoryTheme.Animals
+    ]),
     readingTimeMinutes: z.number(),
 });
 
@@ -32,6 +45,7 @@ export interface StoryPromptInput {
     childName: string;
     childAge: number;
     category: StoryCategory;
+    theme: StoryTheme;
 }
 
 function getAgeGroupPrompt(age: number): string {
@@ -52,15 +66,27 @@ function getCategoryPrompt(category: StoryCategory): string {
     return prompts[category];
 }
 
+function getThemePrompt(theme: StoryTheme): string {
+    const prompts = {
+        [StoryTheme.Dinosaurs]: 'featuring exciting dinosaurs and prehistoric adventures',
+        [StoryTheme.Pirates]: 'about swashbuckling pirates and treasure hunts',
+        [StoryTheme.Princess]: 'about magical princesses and royal adventures',
+        [StoryTheme.Space]: 'about space exploration and cosmic wonders',
+        [StoryTheme.Animals]: 'featuring lovable animal characters and their adventures',
+    };
+    return prompts[theme];
+}
+
 export function createStoryPrompt(input: StoryPromptInput): string {
-    const { childName, childAge, category } = input;
+    const { childName, childAge, category, theme } = input;
     const ageGroupPrompt = getAgeGroupPrompt(childAge);
     const categoryPrompt = getCategoryPrompt(category);
+    const themePrompt = getThemePrompt(theme);
 
     return `You are a creative children's story writer. You excel at creating engaging, age-appropriate stories that capture children's imagination while maintaining appropriate language and themes for their age group.
 
 Create a story for a child named ${childName} who is ${childAge} years old. 
-The story should be ${categoryPrompt}, using ${ageGroupPrompt}.
+The story should be ${categoryPrompt} ${themePrompt}, using ${ageGroupPrompt}.
 
 Make sure the story:
 1. Is engaging and age-appropriate
@@ -68,5 +94,6 @@ Make sure the story:
 3. Has a clear beginning, middle, and end
 4. Includes descriptive language and dialogue
 5. Avoids any scary or inappropriate content
-6. Maintains a consistent tone throughout`;
+6. Maintains a consistent tone throughout
+7. Incorporates the theme naturally and engagingly`;
 } 

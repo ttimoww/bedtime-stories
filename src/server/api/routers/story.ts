@@ -2,13 +2,14 @@ import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { generateStory } from "@/lib/ai/story";
 import { StoryGenerationError, API_ERROR_CODES } from "@/lib/api-error";
-import { StoryCategory } from "@/lib/ai/story-prompt";
+import { StoryCategory, StoryTheme } from "@/lib/ai/story-prompt";
 import { TRPCError } from "@trpc/server";
 
 const storyInputSchema = z.object({
     childName: z.string().min(1, "Child's name is required"),
     age: z.number().min(1, "Age must be at least 1").max(12, "Age must be 12 or less"),
     category: z.nativeEnum(StoryCategory),
+    theme: z.nativeEnum(StoryTheme),
 });
 
 export const storyRouter = createTRPCRouter({
@@ -58,6 +59,7 @@ export const storyRouter = createTRPCRouter({
                     childName: input.childName,
                     childAge: input.age,
                     category: input.category,
+                    theme: input.theme,
                 });
 
                 // Save story to database
@@ -76,7 +78,7 @@ export const storyRouter = createTRPCRouter({
                                 {
                                     name: story.category,
                                     ageRange: `${input.age}-${input.age + 2} years`,
-                                    theme: story.category,
+                                    theme: story.theme,
                                     length: story.readingTimeMinutes <= 5 ? "Short" : "Medium",
                                 },
                             ],
