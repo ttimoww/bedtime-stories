@@ -27,12 +27,13 @@ export const postRouter = createTRPCRouter({
     }),
 
   getLatest: protectedProcedure.query(async ({ ctx }) => {
-    const post = await ctx.db.post.findFirst({
-      orderBy: { createdAt: "desc" },
-      where: { createdBy: { id: ctx.session.user.id } },
-    });
+    // const post = await ctx.db.post.findFirst({
+    //   orderBy: { createdAt: "desc" },
+    //   where: { createdBy: { id: ctx.session.user.id } },
+    // });
 
-    return post ?? null;
+    // return post ?? null;
+    return null
   }),
 
   getSecretMessage: protectedProcedure.query(() => {

@@ -19,7 +19,9 @@
         "details": "Define models for User, Story, and Category in the Prisma schema. Ensure relationships are correctly established. Use PostgreSQL as the database and configure the Prisma client for database interactions.\n<info added on 2025-06-19T12:17:17.467Z>\nResearch current best practices for designing a Prisma schema for a Next.js application, focusing on user accounts, content storage (stories), and categorization. Include recommendations for relations, indexing, and data modeling. Ensure the detail level is high and consider a context size of 18509 characters.\n</info added on 2025-06-19T12:17:17.467Z>",
         "testStrategy": "Run Prisma migrations and verify the database schema is created correctly. Test CRUD operations for each model.",
         "priority": "high",
-        "dependencies": [1],
+        "dependencies": [
+          1
+        ],
         "status": "done",
         "subtasks": [
           {
@@ -34,7 +36,9 @@
             "id": 2,
             "title": "Create the User model",
             "description": "Define the User model in the Prisma schema, integrating with NextAuth.",
-            "dependencies": [1],
+            "dependencies": [
+              1
+            ],
             "details": "Add a User model to the schema.prisma file with fields for id, name, email, and any other necessary fields for NextAuth integration.",
             "status": "done"
           },
@@ -42,7 +46,9 @@
             "id": 3,
             "title": "Create the Story model with proper relations",
             "description": "Define the Story model in the Prisma schema and establish relationships with the User model.",
-            "dependencies": [2],
+            "dependencies": [
+              2
+            ],
             "details": "Add a Story model with fields for id, title, content, and a relation to the User model (author).",
             "status": "done"
           },
@@ -50,7 +56,9 @@
             "id": 4,
             "title": "Create the Category model with many-to-many relationships",
             "description": "Define the Category model in the Prisma schema and set up a many-to-many relationship with the Story model.",
-            "dependencies": [3],
+            "dependencies": [
+              3
+            ],
             "details": "Add a Category model with fields for id and name. Use a join table to establish a many-to-many relationship with the Story model.",
             "status": "done"
           },
@@ -58,7 +66,9 @@
             "id": 5,
             "title": "Set up indexes and optimizations",
             "description": "Optimize the database schema by setting up indexes on frequently queried fields.",
-            "dependencies": [4],
+            "dependencies": [
+              4
+            ],
             "details": "Identify fields that require indexing, such as email in the User model, and add indexes in the schema.prisma file.",
             "status": "done"
           },
@@ -66,7 +76,9 @@
             "id": 6,
             "title": "Create database migrations and seed data",
             "description": "Generate and apply database migrations, then create seed data for testing.",
-            "dependencies": [5],
+            "dependencies": [
+              5
+            ],
             "details": "Run 'npx prisma migrate dev' to apply migrations. Create a seed script to populate the database with initial data.",
             "status": "done"
           }
@@ -76,12 +88,55 @@
         "id": 4,
         "title": "Setup Frontend Scaffolding",
         "description": "Develop the basic frontend structure with routing and initial UI components using Next.js and Tailwind CSS.",
-        "details": "Create the main layout and navigation components. Implement routing for key pages: Home, Login, Signup, Story Generation, and Library. Use Tailwind CSS for styling and ensure mobile-first design principles.",
-        "testStrategy": "Verify that all routes are accessible and the basic UI components render correctly on different devices.",
+        "status": "done",
+        "dependencies": [
+          1
+        ],
         "priority": "medium",
-        "dependencies": [1],
-        "status": "pending",
-        "subtasks": []
+        "details": "Create the main layout and navigation components. Implement routing for key pages: Home, Login, Signup, Story Generation, and Library. Use Tailwind CSS for styling and ensure mobile-first design principles. Integrate shadcn/ui components for consistent UI elements. Implement dark mode support using next-themes and ensure responsive layouts for all pages. Add authentication UI components for login and signup forms.",
+        "testStrategy": "Verify that all routes are accessible and the basic UI components render correctly on different devices. Test the integration of shadcn/ui components and ensure dark mode toggles correctly. Confirm that authentication forms function as expected.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create main layout with header and theme support",
+            "status": "completed"
+          },
+          {
+            "id": 2,
+            "title": "Implement navigation component with mobile-first design",
+            "status": "completed"
+          },
+          {
+            "id": 3,
+            "title": "Set up key routes",
+            "status": "completed"
+          },
+          {
+            "id": 4,
+            "title": "Integrate shadcn/ui components",
+            "status": "completed"
+          },
+          {
+            "id": 5,
+            "title": "Implement dark mode support with next-themes",
+            "status": "completed"
+          },
+          {
+            "id": 6,
+            "title": "Create responsive layouts for all pages",
+            "status": "completed"
+          },
+          {
+            "id": 7,
+            "title": "Add authentication UI components",
+            "status": "completed"
+          },
+          {
+            "id": 8,
+            "title": "Verify integration of shadcn/ui components and dark mode functionality",
+            "status": "done"
+          }
+        ]
       },
       {
         "id": 5,
@@ -90,7 +145,9 @@
         "details": "Create a form for entering the child's name. Implement an icon-based picker for story categories using shadcn/ui components. Ensure accessibility and responsiveness of the UI.",
         "testStrategy": "Test the form submission and category selection. Verify that inputs are correctly captured and validated.",
         "priority": "high",
-        "dependencies": [4],
+        "dependencies": [
+          4
+        ],
         "status": "pending",
         "subtasks": []
       },
@@ -101,7 +158,9 @@
         "details": "Use tRPC to handle API requests. Construct prompts for the OpenAI API using user inputs. Parse the API response to extract the generated story. Handle errors and edge cases gracefully.",
         "testStrategy": "Test story generation with various inputs. Verify that the generated stories are displayed correctly and handle API errors.",
         "priority": "high",
-        "dependencies": [5],
+        "dependencies": [
+          5
+        ],
         "status": "pending",
         "subtasks": []
       },
@@ -112,7 +171,9 @@
         "details": "Design a simple and engaging UI to present the generated story. Use Tailwind CSS for styling and ensure the UI is responsive. Include options for regenerating the story or saving it to the library.",
         "testStrategy": "Verify that the story is displayed correctly and the UI is responsive. Test the regenerate and save options.",
         "priority": "medium",
-        "dependencies": [6],
+        "dependencies": [
+          6
+        ],
         "status": "pending",
         "subtasks": []
       },
@@ -123,7 +184,9 @@
         "details": "Create a backend endpoint using tRPC to save stories to the database. Implement a UI component to list saved stories for the user. Ensure stories are associated with the correct user account.",
         "testStrategy": "Test saving stories and retrieving them from the library. Verify that stories are correctly associated with user accounts.",
         "priority": "medium",
-        "dependencies": [7],
+        "dependencies": [
+          7
+        ],
         "status": "pending",
         "subtasks": []
       },
@@ -134,7 +197,10 @@
         "details": "Use CSS animations and transitions to enhance the UI. Focus on smooth transitions between pages and interactive elements. Ensure animations are performant and do not hinder accessibility.",
         "testStrategy": "Verify that animations are smooth and do not cause layout shifts. Test on various devices to ensure consistent performance.",
         "priority": "low",
-        "dependencies": [4, 7],
+        "dependencies": [
+          4,
+          7
+        ],
         "status": "pending",
         "subtasks": []
       },
@@ -145,7 +211,9 @@
         "details": "Add a button to the story display UI for regenerating the story. Ensure the regeneration process uses the same inputs but generates a new story. Handle API calls and update the UI accordingly.",
         "testStrategy": "Test the regeneration feature to ensure new stories are generated. Verify that the UI updates correctly and handles errors.",
         "priority": "medium",
-        "dependencies": [7],
+        "dependencies": [
+          7
+        ],
         "status": "pending",
         "subtasks": []
       },
@@ -156,25 +224,16 @@
         "details": "Use performance profiling tools to identify bottlenecks. Optimize images, scripts, and styles for faster load times. Implement lazy loading for non-critical resources.",
         "testStrategy": "Test the app on various mobile devices and browsers. Measure load times and responsiveness to ensure optimal performance.",
         "priority": "medium",
-        "dependencies": [9],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 13,
-        "title": "Implement Security Best Practices",
-        "description": "Ensure the application follows security best practices to protect user data.",
-        "details": "Implement HTTPS for secure data transmission. Use environment variables for sensitive configurations. Regularly update dependencies to patch vulnerabilities.",
-        "testStrategy": "Conduct security audits and penetration testing. Verify that sensitive data is protected and no vulnerabilities are present.",
-        "priority": "high",
-        "dependencies": [3],
+        "dependencies": [
+          9
+        ],
         "status": "pending",
         "subtasks": []
       }
     ],
     "metadata": {
       "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T12:23:04.230Z",
+      "updated": "2025-06-19T16:09:13.348Z",
       "description": "Tasks for master context"
     }
   }
