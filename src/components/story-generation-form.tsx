@@ -88,7 +88,7 @@ export function StoryGenerationForm() {
             name="childName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Child's Name</FormLabel>
+                <FormLabel>Child&apos;s Name</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter your child's name" {...field} />
                 </FormControl>
@@ -105,7 +105,7 @@ export function StoryGenerationForm() {
             name="age"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Child's Age</FormLabel>
+                <FormLabel>Child&apos;s Age</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
@@ -114,7 +114,7 @@ export function StoryGenerationForm() {
                   />
                 </FormControl>
                 <FormDescription>
-                  We'll adjust the story's complexity based on age.
+                  We&apos;ll adjust the story&apos;s complexity based on age.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -124,14 +124,14 @@ export function StoryGenerationForm() {
           <FormField
             control={form.control}
             name="category"
-            render={({ field }) => (
+            render={({ field: _field }) => (
               <FormItem>
                 <FormLabel>Story Category</FormLabel>
                 <FormControl>
                   <StoryCategoryPicker control={form.control} name="category" />
                 </FormControl>
                 <FormDescription>
-                  Choose the type of story you'd like to generate.
+                  Choose the type of story you&apos;d like to generate.
                 </FormDescription>
                 <FormMessage />
               </FormItem>

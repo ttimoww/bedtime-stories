@@ -6,7 +6,7 @@ import {
   publicProcedure,
 } from "@/server/api/trpc";
 
-export const postRouter = createTRPCRouter({
+export const storyRouter = createTRPCRouter({
   hello: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -16,24 +16,35 @@ export const postRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(z.object({
+      title: z.string().min(1),
+      content: z.string().min(1),
+      childName: z.string().min(1),
+    }))
     .mutation(async ({ ctx, input }) => {
-      return ctx.db.post.create({
-        data: {
-          name: input.name,
-          createdBy: { connect: { id: ctx.session.user.id } },
-        },
-      });
+      try {
+        return await ctx.db.story.create({
+          data: {
+            title: input.title,
+            content: input.content,
+            childName: input.childName,
+            author: { connect: { id: ctx.session.user.id } },
+          },
+        });
+      } catch (error) {
+        throw new Error(error instanceof Error ? error.message : "Failed to create story");
+      }
     }),
 
   getLatest: protectedProcedure.query(async ({ ctx }) => {
-    // const post = await ctx.db.post.findFirst({
-    //   orderBy: { createdAt: "desc" },
-    //   where: { createdBy: { id: ctx.session.user.id } },
-    // });
-
-    // return post ?? null;
-    return null
+    try {
+      return await ctx.db.story.findFirst({
+        orderBy: { createdAt: "desc" },
+        where: { authorId: ctx.session.user.id },
+      });
+    } catch (error) {
+      throw new Error(error instanceof Error ? error.message : "Failed to fetch latest story");
+    }
   }),
 
   getSecretMessage: protectedProcedure.query(() => {

@@ -42,7 +42,7 @@ export default function LibraryPage() {
       {stories && stories.length === 0 && (
         <div className="py-8 text-center">
           <p className="text-muted-foreground">
-            You haven't created any stories yet. Head over to the story
+            You haven&apos;t created any stories yet. Head over to the story
             generator to create your first story!
           </p>
         </div>
