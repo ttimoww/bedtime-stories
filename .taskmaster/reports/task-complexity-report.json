@@ -1,12 +1,12 @@
 {
 	"meta": {
-		"generatedAt": "2025-06-19T16:25:55.925Z",
+		"generatedAt": "2025-06-19T16:46:44.635Z",
 		"tasksAnalyzed": 1,
 		"totalTasks": 10,
 		"analysisCount": 15,
 		"thresholdScore": 5,
 		"projectName": "Taskmaster",
-		"usedResearch": false
+		"usedResearch": true
 	},
 	"complexityAnalysis": [
 		{
@@ -40,14 +40,6 @@
 			"recommendedSubtasks": 3,
 			"expansionPrompt": "Describe the process of creating the main layout and navigation components, implementing routing for key pages, and applying Tailwind CSS for styling with a mobile-first approach.",
 			"reasoning": "Setting up the frontend structure involves creating reusable components, configuring routing, and ensuring responsive design. While not overly complex, it requires a structured approach to establish a solid foundation for the application."
-		},
-		{
-			"taskId": 6,
-			"taskTitle": "Integrate Story Generation API",
-			"complexityScore": 8,
-			"recommendedSubtasks": 6,
-			"expansionPrompt": "Detail the process of using tRPC to handle API requests, constructing prompts for the OpenAI API based on user inputs, parsing API responses, and handling errors and edge cases.",
-			"reasoning": "Integrating an external API like OpenAI's involves handling asynchronous requests, constructing dynamic prompts, parsing responses, and managing potential errors. This complexity requires a detailed breakdown into multiple subtasks."
 		},
 		{
 			"taskId": 7,
@@ -128,6 +120,14 @@
 			"recommendedSubtasks": 5,
 			"expansionPrompt": "Break down the task into subtasks such as designing the form layout, implementing the icon-based picker, ensuring UI accessibility, making the UI responsive, and setting up form validation.",
 			"reasoning": "The task involves multiple components including UI design, implementation of interactive elements, and ensuring accessibility and responsiveness, which increases complexity. It requires integration with existing components and thorough testing, suggesting a need for multiple subtasks to manage these aspects effectively."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Integrate Story Generation API",
+			"complexityScore": 7,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Break down the task into the following subtasks: 1) Set up tRPC procedures for API requests, 2) Design prompt construction logic based on user inputs, 3) Implement response parsing to extract generated stories, and 4) Develop error handling mechanisms for API errors and edge cases.",
+			"reasoning": "Integrating the OpenAI API involves multiple steps, including setting up tRPC procedures, constructing prompts, parsing responses, and handling errors. Each step requires careful implementation to ensure seamless communication between the frontend and the API. Breaking down the task into these four subtasks will facilitate a structured development process and ensure all aspects are adequately addressed."
 		}
 	]
 }
