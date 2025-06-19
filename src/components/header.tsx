@@ -61,7 +61,7 @@ export function Header() {
                   role="status"
                   aria-label="Logged in as"
                 >
-                  {session.user?.name || session.user?.email}
+                  {session.user?.name ?? session.user?.email}
                 </span>
                 <Button
                   variant="outline"
