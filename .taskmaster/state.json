@@ -1,6 +1,8 @@
 {
-  "currentTag": "master",
-  "lastSwitched": "2025-06-19T11:39:17.242Z",
-  "branchTagMapping": {},
+  "currentTag": "feature-story-display-ui",
+  "lastSwitched": "2025-06-19T19:25:25.851Z",
+  "branchTagMapping": {
+    "feature/story-display-ui": "feature-story-display-ui"
+  },
   "migrationNoticeShown": false
 }

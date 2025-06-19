@@ -3,331 +3,71 @@
     "tasks": [
       {
         "id": 1,
-        "title": "Setup Project Repository",
-        "description": "Initialize the project repository using create-t3-app boilerplate with Next.js, TypeScript, Tailwind CSS, and shadcn/ui.",
-        "details": "Use the create-t3-app boilerplate to set up the project. Ensure TypeScript is enabled for type safety. Configure Tailwind CSS for styling and integrate shadcn/ui for consistent UI components. Initialize a Git repository and set up version control.",
-        "testStrategy": "Verify that the project builds successfully and the initial page renders without errors.",
-        "priority": "medium",
-        "dependencies": [],
-        "status": "done",
-        "subtasks": []
-      },
-      {
-        "id": 3,
-        "title": "Design Database Schema",
-        "description": "Create the database schema using Prisma ORM to support user accounts, story data, and categories.",
-        "details": "Define models for User, Story, and Category in the Prisma schema. Ensure relationships are correctly established. Use PostgreSQL as the database and configure the Prisma client for database interactions.\n<info added on 2025-06-19T12:17:17.467Z>\nResearch current best practices for designing a Prisma schema for a Next.js application, focusing on user accounts, content storage (stories), and categorization. Include recommendations for relations, indexing, and data modeling. Ensure the detail level is high and consider a context size of 18509 characters.\n</info added on 2025-06-19T12:17:17.467Z>",
-        "testStrategy": "Run Prisma migrations and verify the database schema is created correctly. Test CRUD operations for each model.",
-        "priority": "high",
-        "dependencies": [
-          1
-        ],
-        "status": "done",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Set up initial Prisma configuration",
-            "description": "Initialize Prisma in the project and configure it to use PostgreSQL.",
-            "dependencies": [],
-            "details": "Run 'npx prisma init' to set up Prisma. Configure the .env file with PostgreSQL connection details.",
-            "status": "done"
-          },
-          {
-            "id": 2,
-            "title": "Create the User model",
-            "description": "Define the User model in the Prisma schema, integrating with NextAuth.",
-            "dependencies": [
-              1
-            ],
-            "details": "Add a User model to the schema.prisma file with fields for id, name, email, and any other necessary fields for NextAuth integration.",
-            "status": "done"
-          },
-          {
-            "id": 3,
-            "title": "Create the Story model with proper relations",
-            "description": "Define the Story model in the Prisma schema and establish relationships with the User model.",
-            "dependencies": [
-              2
-            ],
-            "details": "Add a Story model with fields for id, title, content, and a relation to the User model (author).",
-            "status": "done"
-          },
-          {
-            "id": 4,
-            "title": "Create the Category model with many-to-many relationships",
-            "description": "Define the Category model in the Prisma schema and set up a many-to-many relationship with the Story model.",
-            "dependencies": [
-              3
-            ],
-            "details": "Add a Category model with fields for id and name. Use a join table to establish a many-to-many relationship with the Story model.",
-            "status": "done"
-          },
-          {
-            "id": 5,
-            "title": "Set up indexes and optimizations",
-            "description": "Optimize the database schema by setting up indexes on frequently queried fields.",
-            "dependencies": [
-              4
-            ],
-            "details": "Identify fields that require indexing, such as email in the User model, and add indexes in the schema.prisma file.",
-            "status": "done"
-          },
-          {
-            "id": 6,
-            "title": "Create database migrations and seed data",
-            "description": "Generate and apply database migrations, then create seed data for testing.",
-            "dependencies": [
-              5
-            ],
-            "details": "Run 'npx prisma migrate dev' to apply migrations. Create a seed script to populate the database with initial data.",
-            "status": "done"
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "title": "Setup Frontend Scaffolding",
-        "description": "Develop the basic frontend structure with routing and initial UI components using Next.js and Tailwind CSS.",
-        "status": "done",
-        "dependencies": [
-          1
-        ],
-        "priority": "medium",
-        "details": "Create the main layout and navigation components. Implement routing for key pages: Home, Login, Signup, Story Generation, and Library. Use Tailwind CSS for styling and ensure mobile-first design principles. Integrate shadcn/ui components for consistent UI elements. Implement dark mode support using next-themes and ensure responsive layouts for all pages. Add authentication UI components for login and signup forms.",
-        "testStrategy": "Verify that all routes are accessible and the basic UI components render correctly on different devices. Test the integration of shadcn/ui components and ensure dark mode toggles correctly. Confirm that authentication forms function as expected.",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Create main layout with header and theme support",
-            "status": "completed"
-          },
-          {
-            "id": 2,
-            "title": "Implement navigation component with mobile-first design",
-            "status": "completed"
-          },
-          {
-            "id": 3,
-            "title": "Set up key routes",
-            "status": "completed"
-          },
-          {
-            "id": 4,
-            "title": "Integrate shadcn/ui components",
-            "status": "completed"
-          },
-          {
-            "id": 5,
-            "title": "Implement dark mode support with next-themes",
-            "status": "completed"
-          },
-          {
-            "id": 6,
-            "title": "Create responsive layouts for all pages",
-            "status": "completed"
-          },
-          {
-            "id": 7,
-            "title": "Add authentication UI components",
-            "status": "completed"
-          },
-          {
-            "id": 8,
-            "title": "Verify integration of shadcn/ui components and dark mode functionality",
-            "status": "done"
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "title": "Develop Story Generation Interface",
-        "description": "Build the user interface for inputting child's name and selecting story categories using icon-based picker.",
-        "status": "done",
+        "title": "Build Story Display UI",
+        "description": "Create a UI component to display generated stories with sections for title, content, moral lesson, and discussion questions, ensuring responsive design and readability.",
+        "details": "Develop a React component named `StoryDisplay` that will render the story title, content, moral lesson, and discussion questions. Use CSS Flexbox or Grid for layout to ensure responsive design across different screen sizes. Apply consistent typography using a library like Google Fonts for readability. Ensure the component is styled to be visually appealing, possibly using a design system or library like Material-UI or Tailwind CSS. Consider accessibility features such as ARIA roles and keyboard navigation. The component should be modular to allow easy updates or changes to the story format.",
+        "testStrategy": "1. Verify the component renders correctly with mock data for title, content, moral lesson, and discussion questions. 2. Test responsiveness by resizing the browser window and ensuring the layout adjusts appropriately. 3. Check typography for readability and consistency across different browsers. 4. Use accessibility tools to ensure the component is navigable via keyboard and screen readers. 5. Conduct user testing to gather feedback on visual appeal and readability.",
+        "status": "pending",
         "dependencies": [
           4
         ],
         "priority": "high",
-        "details": "Create a form for entering the child's name using shadcn/ui Form components. Implement an icon-based picker for story categories using shadcn/ui components. Ensure accessibility and responsiveness of the UI.",
-        "testStrategy": "Test the form submission and category selection using React Hook Form. Verify that inputs are correctly captured, validated with Zod, and TypeScript types are correctly applied.",
         "subtasks": [
           {
             "id": 1,
-            "title": "Design Form Layout",
-            "description": "Create a user-friendly and accessible form layout that aligns with project requirements.",
+            "title": "Design the component layout and structure",
+            "description": "Create a wireframe or mockup outlining the arrangement of the title, content, moral lesson, and discussion questions sections within the Story Display UI.",
             "dependencies": [],
-            "details": "Develop a form structure using shadcn/ui Form components such as form, form-field, form-item, form-label, and form-control. Ensure labels are clear and concise, placed adjacent to their corresponding input fields. Group related fields using appropriate components for better organization.",
-            "status": "done"
+            "details": "This involves determining the visual hierarchy and spatial organization of each section to ensure a coherent and user-friendly interface.",
+            "status": "pending"
           },
           {
             "id": 2,
-            "title": "Implement Icon-Based Picker",
-            "description": "Develop an interactive icon-based picker component for user input selection.",
+            "title": "Implement the React component with sections for title, content, moral lesson, and discussion questions",
+            "description": "Develop a React component that encapsulates the structure defined in the design phase, ensuring each section is properly rendered.",
             "dependencies": [
               1
             ],
-            "details": "Create an icon-based picker using accessible HTML and ARIA attributes with shadcn/ui components. Ensure each icon has a descriptive label and is keyboard-navigable. Provide alternative text for each icon to assist screen reader users. Test the picker for usability and accessibility compliance.",
-            "status": "done"
+            "details": "Utilize functional components and adhere to the single responsibility principle to maintain modularity and reusability.",
+            "status": "pending"
           },
           {
             "id": 3,
-            "title": "Ensure UI Accessibility",
-            "description": "Enhance the form's accessibility to accommodate users with disabilities.",
+            "title": "Apply responsive design techniques using CSS Flexbox or Grid",
+            "description": "Ensure the Story Display UI adapts seamlessly to various screen sizes by implementing responsive design principles.",
             "dependencies": [
-              1,
               2
             ],
-            "details": "Implement keyboard navigation by ensuring all form elements are operable using the Tab key and provide visible focus indicators. Use ARIA attributes like aria-labelledby and aria-describedby to associate labels and instructions with form fields. Ensure error messages are clear, descriptive, and programmatically associated with the relevant fields. Validate form input and provide real-time feedback to users.",
-            "status": "done"
+            "details": "Employ CSS Flexbox or Grid layouts to create a flexible and responsive design that maintains usability across devices.",
+            "status": "pending"
           },
           {
             "id": 4,
-            "title": "Make UI Responsive",
-            "description": "Adapt the form layout to be responsive across various devices and screen sizes.",
-            "dependencies": [
-              1,
-              2
-            ],
-            "details": "Use flexible layouts and CSS media queries to adjust the form's appearance on different screen sizes. Implement breakpoints to modify the layout for tablets and mobile devices. Ensure touch targets are large enough for easy interaction on touchscreens. Optimize images and icons for different devices, using scalable vector graphics (SVGs) where possible.",
-            "status": "done"
-          },
-          {
-            "id": 5,
-            "title": "Set Up Form Validation",
-            "description": "Implement client-side and server-side validation to ensure data integrity and provide user feedback.",
-            "dependencies": [
-              1,
-              2,
-              3,
-              4
-            ],
-            "details": "Use Zod schema for form validation and integrate it with React Hook Form. Develop real-time inline validation to inform users about the correctness of their input as they type. Provide clear and specific error messages near the relevant fields. Use ARIA live regions to notify screen reader users of validation errors. Ensure that validation does not rely solely on color indicators to convey information. Apply TypeScript types derived from the Zod schema to ensure type safety.",
-            "status": "done"
-          }
-        ]
-      },
-      {
-        "id": 6,
-        "title": "Integrate Story Generation API",
-        "description": "Connect the frontend with the Vercel AI SDK to generate stories based on user inputs.",
-        "status": "done",
-        "dependencies": [
-          5
-        ],
-        "priority": "high",
-        "details": "Use tRPC to handle API requests with the Vercel AI SDK. Construct prompts for the SDK using user inputs and leverage the SDK's structured output feature for better type safety. Parse the SDK response to extract the generated story. Handle errors and edge cases gracefully, providing user feedback.",
-        "testStrategy": "Test story generation with various inputs using the Vercel AI SDK. Verify that the generated stories are displayed correctly and handle SDK errors effectively.",
-        "subtasks": [
-          {
-            "id": 1,
-            "title": "Install and configure Vercel AI SDK",
-            "description": "Set up the Vercel AI SDK in the project to enable AI capabilities.",
-            "dependencies": [],
-            "details": "Ensure the Vercel AI SDK is installed and properly configured in the development environment.\n<info added on 2025-06-19T16:51:18.897Z>\nOrganize AI-related code in a dedicated folder structure:\n\n- Create a dedicated AI folder structure in src/lib/ai\n- This folder should contain:\n  - Configuration for Vercel AI SDK\n  - AI-related types and interfaces\n  - Prompt construction utilities\n  - Story generation logic\n  - Any other AI-related utilities\n- This separation will make the AI functionality more maintainable and easier to locate\n- Install and configure Vercel AI SDK within this new structure\n</info added on 2025-06-19T16:51:18.897Z>",
-            "status": "done"
-          },
-          {
-            "id": 2,
-            "title": "Create tRPC procedure with structured output types",
-            "description": "Develop a tRPC procedure that defines structured output types for API requests.",
-            "dependencies": [
-              1
-            ],
-            "details": "Design and implement a tRPC procedure that ensures the API responses are structured and typed.",
-            "status": "done"
-          },
-          {
-            "id": 3,
-            "title": "Implement story generation with request-response flow",
-            "description": "Develop the logic to handle story generation using the Vercel AI SDK's generateObject function",
-            "dependencies": [
-              2
-            ],
-            "details": "- Implement a simple request-response flow using the generateObject function\n- Add loading state management during story generation\n- Handle the complete story object when received from the API\n- Ensure proper type safety throughout the implementation\n- Integrate with the UI components to display the generated story\n- Add proper loading indicators during generation\n- Implement client-side state management for the story generation process",
-            "status": "done"
-          },
-          {
-            "id": 4,
-            "title": "Add error handling and user feedback",
-            "description": "Implement error handling mechanisms and provide user feedback for API errors and edge cases.",
+            "title": "Integrate typography and styling using a design system or library",
+            "description": "Enhance the visual appeal and consistency of the UI by applying standardized typography and styling.",
             "dependencies": [
               3
             ],
-            "details": "Ensure robust error handling is in place and users receive appropriate feedback in case of API errors or unexpected scenarios.",
-            "status": "done"
+            "details": "Leverage a design system or library to ensure uniformity in fonts, colors, and other stylistic elements across the application.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Ensure accessibility features such as ARIA roles and keyboard navigation",
+            "description": "Implement accessibility enhancements to make the Story Display UI usable for individuals with disabilities.",
+            "dependencies": [
+              4
+            ],
+            "details": "Incorporate semantic HTML, ARIA attributes, and keyboard navigation support to comply with accessibility standards and provide an inclusive user experience.",
+            "status": "pending"
           }
         ]
-      },
-      {
-        "id": 7,
-        "title": "Build Story Display UI",
-        "description": "Create the UI for displaying generated stories to the user.",
-        "details": "Design a simple and engaging UI to present the generated story. Use Tailwind CSS for styling and ensure the UI is responsive. Include options for regenerating the story or saving it to the library.",
-        "testStrategy": "Verify that the story is displayed correctly and the UI is responsive. Test the regenerate and save options.",
-        "priority": "medium",
-        "dependencies": [
-          6
-        ],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 8,
-        "title": "Implement Saved Stories Library",
-        "description": "Develop the feature to save and retrieve generated stories for user accounts.",
-        "details": "Create a backend endpoint using tRPC to save stories to the database. Implement a UI component to list saved stories for the user. Ensure stories are associated with the correct user account.",
-        "testStrategy": "Test saving stories and retrieving them from the library. Verify that stories are correctly associated with user accounts.",
-        "priority": "medium",
-        "dependencies": [
-          7
-        ],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 9,
-        "title": "Enhance UI/UX with Transitions and Animations",
-        "description": "Add transitions and animations to improve the user experience.",
-        "details": "Use CSS animations and transitions to enhance the UI. Focus on smooth transitions between pages and interactive elements. Ensure animations are performant and do not hinder accessibility.",
-        "testStrategy": "Verify that animations are smooth and do not cause layout shifts. Test on various devices to ensure consistent performance.",
-        "priority": "low",
-        "dependencies": [
-          4,
-          7
-        ],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 11,
-        "title": "Implement Story Regeneration Feature",
-        "description": "Allow users to regenerate a story if they want a new variation.",
-        "details": "Add a button to the story display UI for regenerating the story. Ensure the regeneration process uses the same inputs but generates a new story. Handle API calls and update the UI accordingly.",
-        "testStrategy": "Test the regeneration feature to ensure new stories are generated. Verify that the UI updates correctly and handles errors.",
-        "priority": "medium",
-        "dependencies": [
-          7
-        ],
-        "status": "pending",
-        "subtasks": []
-      },
-      {
-        "id": 12,
-        "title": "Optimize Performance for Mobile Devices",
-        "description": "Ensure the app performs well on mobile devices, focusing on load times and responsiveness.",
-        "details": "Use performance profiling tools to identify bottlenecks. Optimize images, scripts, and styles for faster load times. Implement lazy loading for non-critical resources.",
-        "testStrategy": "Test the app on various mobile devices and browsers. Measure load times and responsiveness to ensure optimal performance.",
-        "priority": "medium",
-        "dependencies": [
-          9
-        ],
-        "status": "pending",
-        "subtasks": []
       }
     ],
     "metadata": {
-      "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T19:21:50.283Z",
-      "description": "Tasks for master context"
+      "created": "2025-06-19T19:25:22.389Z",
+      "updated": "2025-06-19T19:25:44.180Z",
+      "description": "Tasks for implementing the story display UI feature"
     }
   }
 }

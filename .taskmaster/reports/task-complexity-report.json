@@ -1,22 +1,14 @@
 {
 	"meta": {
-		"generatedAt": "2025-06-19T16:46:44.635Z",
+		"generatedAt": "2025-06-19T19:25:50.911Z",
 		"tasksAnalyzed": 1,
-		"totalTasks": 10,
+		"totalTasks": 1,
 		"analysisCount": 15,
 		"thresholdScore": 5,
 		"projectName": "Taskmaster",
 		"usedResearch": true
 	},
 	"complexityAnalysis": [
-		{
-			"taskId": 1,
-			"taskTitle": "Setup Project Repository",
-			"complexityScore": 3,
-			"recommendedSubtasks": 3,
-			"expansionPrompt": "Break down the steps to initialize the project repository using create-t3-app, configure TypeScript, integrate Tailwind CSS, add shadcn/ui components, and set up Git version control.",
-			"reasoning": "Setting up a project repository with create-t3-app is straightforward, but integrating multiple technologies like TypeScript, Tailwind CSS, and shadcn/ui requires attention to detail. Breaking this task into subtasks ensures each integration is properly configured and tested."
-		},
 		{
 			"taskId": 2,
 			"taskTitle": "Implement User Authentication System",
@@ -128,6 +120,14 @@
 			"recommendedSubtasks": 4,
 			"expansionPrompt": "Break down the task into the following subtasks: 1) Set up tRPC procedures for API requests, 2) Design prompt construction logic based on user inputs, 3) Implement response parsing to extract generated stories, and 4) Develop error handling mechanisms for API errors and edge cases.",
 			"reasoning": "Integrating the OpenAI API involves multiple steps, including setting up tRPC procedures, constructing prompts, parsing responses, and handling errors. Each step requires careful implementation to ensure seamless communication between the frontend and the API. Breaking down the task into these four subtasks will facilitate a structured development process and ensure all aspects are adequately addressed."
+		},
+		{
+			"taskId": 1,
+			"taskTitle": "Build Story Display UI",
+			"complexityScore": 7,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Break down the development of the Story Display UI into the following subtasks: 1. Design the component layout and structure. 2. Implement the React component with sections for title, content, moral lesson, and discussion questions. 3. Apply responsive design techniques using CSS Flexbox or Grid. 4. Integrate typography and styling using a design system or library. 5. Ensure accessibility features such as ARIA roles and keyboard navigation.",
+			"reasoning": "The task involves creating a complex React component that requires careful design and implementation to ensure responsiveness, readability, and accessibility. Breaking it down into five subtasks allows for focused development on each aspect, ensuring a modular and maintainable codebase."
 		}
 	]
 }

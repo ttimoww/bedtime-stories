@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input";
 import { StoryCategoryPicker } from "@/components/story-category-picker";
 import { api } from "@/trpc/react";
 import { StoryCategory } from "@/lib/ai/story-prompt";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { StoryDisplay } from "@/components/story-display";
 
 const storyFormSchema = z.object({
   childName: z
@@ -170,40 +170,7 @@ export function StoryGenerationForm() {
         </form>
       </Form>
 
-      {generatedStory && (
-        <Card>
-          <CardHeader>
-            <CardTitle>{generatedStory.title}</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="prose prose-stone dark:prose-invert">
-              {generatedStory.content.split("\n").map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-            {generatedStory.moralLesson && (
-              <div>
-                <h3 className="font-semibold">Moral of the Story</h3>
-                <p className="text-muted-foreground">
-                  {generatedStory.moralLesson}
-                </p>
-              </div>
-            )}
-            {generatedStory.suggestedQuestions && (
-              <div>
-                <h3 className="font-semibold">Discussion Questions</h3>
-                <ul className="list-disc pl-4">
-                  {generatedStory.suggestedQuestions.map((question, index) => (
-                    <li key={index} className="text-muted-foreground">
-                      {question}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
+      {generatedStory && <StoryDisplay story={generatedStory} />}
     </div>
   );
 }
