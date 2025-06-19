@@ -8,9 +8,10 @@ import { notFound } from "next/navigation";
 export default async function StoryPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const story = await api.story.getById({ id: params.id });
+  const { id } = await params;
+  const story = await api.story.getById({ id });
 
   if (!story) {
     notFound();
