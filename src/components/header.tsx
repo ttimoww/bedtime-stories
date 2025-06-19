@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MainNav } from "@/components/nav/main-nav";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
+import MobileNav from "@/components/nav/mobile-nav";
 
 export function Header() {
   return (
@@ -12,15 +13,18 @@ export function Header() {
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <span className="font-bold">Bedtime Stories</span>
         </Link>
-        <MainNav />
+        <MobileNav />
+        <MainNav className="hidden md:flex" />
         <div className="ml-auto flex items-center space-x-4">
           <ModeToggle />
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link href="/signup">Sign up</Link>
-          </Button>
+          <div className="hidden md:flex md:items-center md:space-x-4">
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/login">Login</Link>
+            </Button>
+            <Button size="sm" asChild>
+              <Link href="/signup">Sign up</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </header>

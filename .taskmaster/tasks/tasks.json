@@ -60,11 +60,176 @@
             "status": "done"
           }
         ]
+      },
+      {
+        "id": 2,
+        "title": "Implement Responsive Mobile Navigation Menu with Shadcn UI",
+        "description": "Create a responsive mobile navigation menu using Shadcn UI's Sheet component that slides in from the side on mobile devices.",
+        "details": "Modify the existing Header component in src/components/header.tsx to replace the horizontal navigation with a hamburger menu button on mobile screens. Create a new MobileNav component that uses Shadcn UI's Sheet component to display navigation items in a vertical layout when the screen width is below the md breakpoint (768px). Ensure the navigation maintains the same items and functionality as the desktop version. Implement animations and transitions for the slide-out effect, and ensure the menu is accessible, supporting both light and dark modes. Use media queries to handle the responsive design and ensure proper touch interactions for mobile users.",
+        "testStrategy": "1. Verify the hamburger menu button appears on screens narrower than 768px and the horizontal navigation is hidden. 2. Test the slide-out functionality of the Sheet component, ensuring smooth animations and transitions. 3. Check that the navigation items are correctly displayed in a vertical layout and are functional. 4. Ensure the menu is accessible, with appropriate ARIA roles and keyboard navigation. 5. Test the appearance and functionality in both light and dark modes. 6. Verify touch interactions work correctly on mobile devices.",
+        "status": "done",
+        "dependencies": [
+          1
+        ],
+        "priority": "medium",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Modify the Header component to include a hamburger menu button",
+            "description": "Add a hamburger menu button to the existing Header component to trigger the mobile navigation menu.",
+            "dependencies": [],
+            "details": "Update the Header component to include a button element styled as a hamburger icon. Ensure the button has appropriate ARIA attributes for accessibility.",
+            "status": "done"
+          },
+          {
+            "id": 2,
+            "title": "Develop the MobileNav component using Shadcn UI's Sheet component",
+            "description": "Create a MobileNav component that utilizes Shadcn UI's Sheet component to display the navigation menu.",
+            "dependencies": [
+              1
+            ],
+            "details": "Implement the MobileNav component by integrating Shadcn UI's Sheet component. Configure the Sheet to slide in from the desired side and include navigation links.",
+            "status": "done"
+          },
+          {
+            "id": 3,
+            "title": "Implement animations and transitions for the slide-out effect",
+            "description": "Add animations and transitions to the MobileNav component to achieve a smooth slide-out effect.",
+            "dependencies": [
+              2
+            ],
+            "details": "Utilize CSS animations or Shadcn UI's built-in transition classes to create a smooth slide-out effect for the Sheet component.",
+            "status": "done"
+          },
+          {
+            "id": 4,
+            "title": "Ensure accessibility compliance with ARIA roles and keyboard navigation",
+            "description": "Enhance the MobileNav component to be fully accessible, including proper ARIA roles and keyboard navigation support.",
+            "dependencies": [
+              2
+            ],
+            "details": "Implement ARIA roles such as 'menu' and 'menuitem' for the navigation elements. Ensure that the menu can be opened, navigated, and closed using keyboard inputs.",
+            "status": "done"
+          },
+          {
+            "id": 5,
+            "title": "Test the navigation in both light and dark modes and on various devices",
+            "description": "Conduct thorough testing of the MobileNav component to ensure functionality and appearance across different themes and devices.",
+            "dependencies": [
+              3,
+              4
+            ],
+            "details": "Test the MobileNav component in both light and dark modes to ensure proper styling. Additionally, test on various devices and screen sizes to confirm responsiveness and usability.",
+            "status": "done"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Implement User Authentication with NextAuth.js",
+        "description": "Set up user authentication using NextAuth.js, including OAuth and email/password methods, and manage authentication state and protected routes.",
+        "details": "1. Install NextAuth.js and configure it in the Next.js application by creating an API route at `/pages/api/auth/[...nextauth].js`.\n2. Set up OAuth providers such as Google and GitHub by registering the application with these providers and obtaining client IDs and secrets.\n3. Implement email/password authentication by configuring a credentials provider in NextAuth.js.\n4. Create login and signup forms using React components, ensuring proper validation for inputs such as email format and password strength.\n5. Manage authentication state using NextAuth.js hooks like `useSession` to access user session data throughout the application.\n6. Implement protected routes by creating a higher-order component (HOC) or middleware that checks authentication status before rendering protected pages.\n7. Set up a database (e.g., PostgreSQL, MongoDB) to store user information and manage sessions, using an ORM like Prisma for database interactions.\n8. Implement session management and persistence by configuring session options in NextAuth.js, such as session expiration and JWT usage.\n9. Add error handling and user feedback mechanisms in the forms and throughout the authentication process, displaying appropriate messages for login failures, signup errors, etc.",
+        "testStrategy": "1. Verify that the NextAuth.js configuration is correctly set up by checking the API route and provider configurations.\n2. Test OAuth login flows by attempting to log in with Google and GitHub accounts, ensuring successful authentication and user data retrieval.\n3. Test email/password authentication by signing up and logging in with valid credentials, checking for correct session creation.\n4. Ensure that login and signup forms validate inputs correctly and display error messages for invalid data.\n5. Check that authentication state is correctly managed across different pages using `useSession`.\n6. Test protected routes by attempting to access them without being authenticated and verifying redirection to the login page.\n7. Verify that user data is correctly stored and retrieved from the database, and that sessions persist across page reloads.\n8. Check error handling by simulating authentication errors and ensuring appropriate feedback is displayed to the user.",
+        "status": "pending",
+        "dependencies": [
+          1
+        ],
+        "priority": "high",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Set Up Next.js Project",
+            "description": "Initialize a new Next.js application to serve as the foundation for implementing authentication.",
+            "dependencies": [],
+            "details": "Use the command `npx create-next-app my-next-auth-app` to create a new Next.js project. Navigate into the project directory using `cd my-next-auth-app`.",
+            "status": "pending"
+          },
+          {
+            "id": 2,
+            "title": "Install NextAuth.js and Dependencies",
+            "description": "Install NextAuth.js along with necessary dependencies for authentication and database integration.",
+            "dependencies": [
+              1
+            ],
+            "details": "Run `npm install next-auth` to install NextAuth.js. Depending on the chosen database, install the corresponding adapter, such as `@next-auth/prisma-adapter` for Prisma. For email authentication, install `nodemailer` using `npm install nodemailer`.",
+            "status": "pending"
+          },
+          {
+            "id": 3,
+            "title": "Configure Environment Variables",
+            "description": "Set up environment variables to securely store sensitive information like API keys and database URLs.",
+            "dependencies": [
+              2
+            ],
+            "details": "Create a `.env.local` file in the project root and add variables such as `DATABASE_URL`, `NEXTAUTH_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `EMAIL_SERVER`, and `EMAIL_FROM` with appropriate values.",
+            "status": "pending"
+          },
+          {
+            "id": 4,
+            "title": "Set Up Database",
+            "description": "Configure the database to store user information and authentication data.",
+            "dependencies": [
+              3
+            ],
+            "details": "Choose a database (e.g., PostgreSQL, MongoDB) and set up the necessary tables or collections. For PostgreSQL, create tables for users, accounts, and sessions. Ensure the database connection is established in the application.",
+            "status": "pending"
+          },
+          {
+            "id": 5,
+            "title": "Configure NextAuth.js",
+            "description": "Set up NextAuth.js to handle authentication flows within the application.",
+            "dependencies": [
+              4
+            ],
+            "details": "Create a file at `pages/api/auth/[...nextauth].js` and configure NextAuth.js with the chosen providers, database adapter, and session settings. Implement callbacks for sign-in and session management as needed.",
+            "status": "pending"
+          },
+          {
+            "id": 6,
+            "title": "Implement OAuth Providers",
+            "description": "Integrate OAuth providers like Google or GitHub for user authentication.",
+            "dependencies": [
+              5
+            ],
+            "details": "Register the application with the chosen OAuth providers to obtain client IDs and secrets. Add the providers to the NextAuth.js configuration, specifying the client credentials and any necessary scopes.",
+            "status": "pending"
+          },
+          {
+            "id": 7,
+            "title": "Implement Email/Password Authentication",
+            "description": "Set up email and password-based authentication using NextAuth.js.",
+            "dependencies": [
+              5
+            ],
+            "details": "Configure the Credentials provider in NextAuth.js to handle email and password sign-ins. Implement the `authorize` function to validate user credentials against the database.",
+            "status": "pending"
+          },
+          {
+            "id": 8,
+            "title": "Create Authentication Forms",
+            "description": "Develop user interface components for sign-in and sign-up processes.",
+            "dependencies": [
+              7
+            ],
+            "details": "Create React components for login and registration forms. Integrate these forms with the authentication functions provided by NextAuth.js, such as `signIn` and `signOut`.",
+            "status": "pending"
+          },
+          {
+            "id": 9,
+            "title": "Implement Protected Routes",
+            "description": "Restrict access to certain pages or API routes to authenticated users only.",
+            "dependencies": [
+              8
+            ],
+            "details": "Use Next.js middleware or higher-order components to check the authentication state before rendering protected pages. Redirect unauthenticated users to the sign-in page as necessary.",
+            "status": "pending"
+          }
+        ]
       }
     ],
     "metadata": {
       "created": "2025-06-19T19:25:22.389Z",
-      "updated": "2025-06-19T19:40:17.557Z",
+      "updated": "2025-06-19T20:27:13.136Z",
       "description": "Tasks for implementing the story display UI feature"
     }
   }

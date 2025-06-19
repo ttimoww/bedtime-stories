@@ -1,30 +1,14 @@
 {
 	"meta": {
-		"generatedAt": "2025-06-19T19:25:50.911Z",
+		"generatedAt": "2025-06-19T20:27:21.921Z",
 		"tasksAnalyzed": 1,
-		"totalTasks": 1,
+		"totalTasks": 3,
 		"analysisCount": 15,
 		"thresholdScore": 5,
 		"projectName": "Taskmaster",
-		"usedResearch": true
+		"usedResearch": false
 	},
 	"complexityAnalysis": [
-		{
-			"taskId": 2,
-			"taskTitle": "Implement User Authentication System",
-			"complexityScore": 7,
-			"recommendedSubtasks": 5,
-			"expansionPrompt": "Detail the process of configuring NextAuth.js with email/password and magic link authentication, setting up secure password storage with bcrypt, and integrating with Prisma for user data management.",
-			"reasoning": "Implementing a user authentication system involves multiple components, including configuring authentication providers, ensuring secure password handling, and integrating with the database. Each component has its own complexities and security considerations, warranting a higher complexity score and multiple subtasks."
-		},
-		{
-			"taskId": 3,
-			"taskTitle": "Design Database Schema",
-			"complexityScore": 6,
-			"recommendedSubtasks": 4,
-			"expansionPrompt": "Outline the steps to define models for User, Story, and Category in the Prisma schema, establish relationships, configure PostgreSQL, and set up the Prisma client.",
-			"reasoning": "Designing a database schema requires careful planning to ensure data integrity and efficient relationships between entities. Using Prisma simplifies this process, but defining models and relationships still requires thoughtful design and testing."
-		},
 		{
 			"taskId": 4,
 			"taskTitle": "Setup Frontend Scaffolding",
@@ -128,6 +112,22 @@
 			"recommendedSubtasks": 5,
 			"expansionPrompt": "Break down the development of the Story Display UI into the following subtasks: 1. Design the component layout and structure. 2. Implement the React component with sections for title, content, moral lesson, and discussion questions. 3. Apply responsive design techniques using CSS Flexbox or Grid. 4. Integrate typography and styling using a design system or library. 5. Ensure accessibility features such as ARIA roles and keyboard navigation.",
 			"reasoning": "The task involves creating a complex React component that requires careful design and implementation to ensure responsiveness, readability, and accessibility. Breaking it down into five subtasks allows for focused development on each aspect, ensuring a modular and maintainable codebase."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Implement Responsive Mobile Navigation Menu with Shadcn UI",
+			"complexityScore": 7,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Break down the task into subtasks such as: 1. Modify the Header component to include a hamburger menu button. 2. Develop the MobileNav component using Shadcn UI's Sheet component. 3. Implement animations and transitions for the slide-out effect. 4. Ensure accessibility compliance with ARIA roles and keyboard navigation. 5. Test the navigation in both light and dark modes and on various devices.",
+			"reasoning": "The task involves multiple aspects of front-end development, including responsive design, component integration, animations, and accessibility. Each of these aspects requires careful implementation and testing, increasing the complexity. The task also involves ensuring compatibility across different modes and devices, which adds to the complexity."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Implement User Authentication with NextAuth.js",
+			"complexityScore": 8,
+			"recommendedSubtasks": 9,
+			"expansionPrompt": "Break down the task into subtasks such as installing and configuring NextAuth.js, setting up OAuth providers, implementing email/password authentication, creating forms, managing authentication state, implementing protected routes, setting up a database, configuring session management, and adding error handling.",
+			"reasoning": "The task involves multiple complex components including OAuth integration, database setup, session management, and error handling. Each component requires specific configurations and testing, making the task complex and necessitating a detailed breakdown into subtasks."
 		}
 	]
 }
