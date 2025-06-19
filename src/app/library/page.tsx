@@ -1,15 +1,12 @@
-import { StoryPreview } from "@/components/story-preview";
+"use client";
 
-// Example story data - will be replaced with real data from the database
-const exampleStory = {
-  id: "1",
-  title: "The Magical Garden",
-  content:
-    "A brave little rabbit discovers a magical garden filled with talking flowers. As he explores the enchanted space, he learns valuable lessons about friendship and courage. The flowers teach him that true beauty comes from being kind to others, and that even the smallest creatures can make a big difference in the world.",
-  createdAt: new Date("2024-03-15"),
-};
+import { StoryPreview } from "@/components/story-preview";
+import { api } from "@/trpc/react";
+import { Loader2 } from "lucide-react";
 
 export default function LibraryPage() {
+  const { data: stories, isLoading, error } = api.story.getAll.useQuery();
+
   return (
     <main className="container mx-auto space-y-6 py-6">
       <div>
@@ -21,10 +18,51 @@ export default function LibraryPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {/* Example story card - will be dynamic in the future */}
-        <StoryPreview story={exampleStory} />
-      </div>
+      {isLoading && (
+        <div className="flex items-center justify-center py-8">
+          <Loader2 className="text-muted-foreground h-8 w-8 animate-spin" />
+        </div>
+      )}
+
+      {error && (
+        <div className="bg-destructive/15 rounded-md p-4">
+          <div className="flex">
+            <div className="ml-3">
+              <h3 className="text-destructive text-sm font-medium">
+                Error loading stories
+              </h3>
+              <div className="text-destructive/90 mt-2 text-sm">
+                {error.message}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {stories && stories.length === 0 && (
+        <div className="py-8 text-center">
+          <p className="text-muted-foreground">
+            You haven't created any stories yet. Head over to the story
+            generator to create your first story!
+          </p>
+        </div>
+      )}
+
+      {stories && stories.length > 0 && (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {stories.map((story) => (
+            <StoryPreview
+              key={story.id}
+              story={{
+                id: story.id,
+                title: story.title,
+                content: story.content,
+                createdAt: story.createdAt,
+              }}
+            />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

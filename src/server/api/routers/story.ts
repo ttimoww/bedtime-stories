@@ -3,6 +3,7 @@ import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { generateStory } from "@/lib/ai/story";
 import { StoryGenerationError, API_ERROR_CODES } from "@/lib/api-error";
 import { StoryCategory } from "@/lib/ai/story-prompt";
+import { TRPCError } from "@trpc/server";
 
 const storyInputSchema = z.object({
     childName: z.string().min(1, "Child's name is required"),
@@ -11,6 +12,44 @@ const storyInputSchema = z.object({
 });
 
 export const storyRouter = createTRPCRouter({
+    getAll: protectedProcedure
+        .query(async ({ ctx }) => {
+            return ctx.db.story.findMany({
+                where: {
+                    authorId: ctx.session.user.id,
+                },
+                orderBy: {
+                    createdAt: "desc",
+                },
+                include: {
+                    categories: true,
+                },
+            });
+        }),
+
+    getById: protectedProcedure
+        .input(z.object({ id: z.string() }))
+        .query(async ({ ctx, input }) => {
+            const story = await ctx.db.story.findUnique({
+                where: {
+                    id: input.id,
+                    authorId: ctx.session.user.id,
+                },
+                include: {
+                    categories: true,
+                },
+            });
+
+            if (!story) {
+                throw new TRPCError({
+                    code: "NOT_FOUND",
+                    message: "Story not found",
+                });
+            }
+
+            return story;
+        }),
+
     generate: protectedProcedure
         .input(storyInputSchema)
         .mutation(async ({ input, ctx }) => {
