@@ -3,11 +3,11 @@ import { createOpenAI } from '@ai-sdk/openai';
 import {
     StorySchema,
     createStoryPrompt
-} from './prompts/story-prompt';
+} from './story-prompt';
 import type {
     Story,
     StoryPromptInput
-} from './prompts/story-prompt';
+} from './story-prompt';
 
 if (!process.env.OPENAI_API_KEY) {
     throw new Error('Missing OPENAI_API_KEY environment variable');
