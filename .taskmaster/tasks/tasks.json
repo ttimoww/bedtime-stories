@@ -237,13 +237,13 @@
           },
           {
             "id": 3,
-            "title": "Implement story generation with streaming responses",
-            "description": "Develop the logic to handle streaming responses for story generation using the Vercel AI SDK.",
+            "title": "Implement story generation with request-response flow",
+            "description": "Develop the logic to handle story generation using the Vercel AI SDK's generateObject function",
             "dependencies": [
               2
             ],
-            "details": "Utilize the Vercel AI SDK to implement streaming responses for generating stories based on user inputs.",
-            "status": "pending"
+            "details": "- Implement a simple request-response flow using the generateObject function\n- Add loading state management during story generation\n- Handle the complete story object when received from the API\n- Ensure proper type safety throughout the implementation\n- Integrate with the UI components to display the generated story\n- Add proper loading indicators during generation\n- Implement client-side state management for the story generation process",
+            "status": "in-progress"
           },
           {
             "id": 4,
@@ -326,7 +326,7 @@
     ],
     "metadata": {
       "created": "2025-06-19T12:04:24.879Z",
-      "updated": "2025-06-19T17:17:06.559Z",
+      "updated": "2025-06-19T17:26:45.259Z",
       "description": "Tasks for master context"
     }
   }
