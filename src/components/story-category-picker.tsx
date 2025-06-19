@@ -34,28 +34,22 @@ const categories: Category[] = [
     description: "Magical worlds and creatures",
   },
   {
-    id: "nature",
-    name: "Nature",
-    icon: "🌳",
-    description: "Stories about animals and the environment",
-  },
-  {
-    id: "space",
-    name: "Space",
-    icon: "🚀",
-    description: "Cosmic adventures and exploration",
-  },
-  {
-    id: "fairytale",
-    name: "Fairy Tale",
-    icon: "👑",
-    description: "Classic fairy tale themes",
-  },
-  {
     id: "educational",
     name: "Educational",
     icon: "📚",
     description: "Learning through stories",
+  },
+  {
+    id: "bedtime",
+    name: "Bedtime",
+    icon: "🌙",
+    description: "Calming stories for bedtime",
+  },
+  {
+    id: "moral",
+    name: "Moral",
+    icon: "❤️",
+    description: "Stories with valuable life lessons",
   },
 ];
 
